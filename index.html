@@ -1427,7 +1427,8 @@ const IWp    =()=>h('svg',{width:14,height:14,viewBox:"0 0 24 24",fill:"currentC
 function Header({setCartOpen}){
   const{count}=useCart();
   const[mo,setMo]=useState(false);
-  const links=[["home","Home"],["materials","Prices"],["tools","Tools"],["guide","Building Guide"],["quote","Get a Quote"]];
+  const links=[["home","Home"],["materials","Prices"],["tools","Tools"],["about","About"],["quote","Get a Quote"]];
+  const externalLinks={about:"about.html",privacy:"privacy.html"};
 
   // Close menu on outside click
   useEffect(()=>{
@@ -1447,7 +1448,7 @@ function Header({setCartOpen}){
         )
       ),
       h('nav',{className:"nav",role:"navigation","aria-label":"Main"},
-        ...links.map(([id,l])=>h('button',{key:id,className:"nl",onClick:()=>go(id)},l))
+        ...links.map(([id,l])=>externalLinks[id]?h('a',{key:id,className:"nl",href:externalLinks[id],style:{textDecoration:"none"}},l):h('button',{key:id,className:"nl",onClick:()=>go(id)},l))
       ),
       h('div',{className:"hdr-right"},
         h('button',{
@@ -1468,10 +1469,7 @@ function Header({setCartOpen}){
       )
     ),
     mo&&h('div',{className:"mob-nav","aria-label":"Mobile navigation"},
-      ...links.map(([id,l])=>h('button',{
-        key:id,className:"mob-nl",
-        onClick:()=>{go(id);setMo(false);}
-      },l))
+      ...links.map(([id,l])=>externalLinks[id]?h('a',{key:id,className:"mob-nl",href:externalLinks[id],style:{textDecoration:"none",display:"block",padding:"12px 14px"}},l):h('button',{key:id,className:"mob-nl",onClick:()=>{go(id);setMo(false);}},l))
     )
   );
 }
@@ -2009,7 +2007,9 @@ function Footer(){
               h('button',{key:id,className:"flink",onClick:()=>go(id)},
                 ["Home","Prices","Tools","Building Guide","Get a Quote"][i]
               )
-            )
+            ),
+            h('a',{href:"about.html",className:"flink",style:{textDecoration:"none"}},"About Briksafe"),
+            h('a',{href:"privacy.html",className:"flink",style:{textDecoration:"none"}},"Privacy Policy")
           )
         ),
         h('div',null,
@@ -2111,7 +2111,11 @@ function EstimatorPanel({currency}){
   const[roof,setRoof]=useState("iron");
   const[results,setResults]=useState(null);
   function run(){setResults(calcEstimate(parseInt(beds),parseInt(storeys),roof));}
-  function addAll(){if(!results)return;results.forEach(r=>{const found=MATS.find(m=>m.name.toLowerCase().includes(r.name.toLowerCase().slice(0,10)));if(found)add({...found,qty:r.qty});});}
+  function addAll(){
+    if(!results)return;
+    results.forEach(r=>{const found=MATS.find(m=>m.name.toLowerCase().includes(r.name.toLowerCase().slice(0,10)));if(found)add({...found,qty:r.qty});});
+    setTimeout(()=>window.dispatchEvent(new CustomEvent('briksafe:opencart')),150);
+  }
   const total=results?results.reduce((s,r)=>s+r.qty*r.gmdUnit,0):0;
   return h('div',null,
     ESTIMATOR_NOTE,
@@ -2523,7 +2527,14 @@ function SavedProjects({currency}){
           )
         ),
         projects.length===0
-          ? h('div',{className:"proj-empty"},"No saved projects yet. Build a quote and save it here to plan your build phase by phase.")
+          ? h('div',{className:"proj-empty"},
+              h('p',{style:{marginBottom:"var(--sp-4)"}},"No saved projects yet. Build a quote and save it here to plan your build phase by phase."),
+              h('button',{
+                className:"btn-primary",
+                style:{fontSize:"var(--t-xs)",padding:"10px 20px",minHeight:"40px"},
+                onClick:()=>go("materials"),
+              },"Browse Prices \u2192")
+            )
           : projects.map(proj=>h('div',{key:proj.id,className:"proj-card"},
               h('div',{className:"proj-card-name"},proj.name),
               h('div',{className:"proj-card-meta"},proj.items.length+" items \u00b7 saved "+proj.saved),
@@ -2599,7 +2610,7 @@ const FAQ_DATA={
     {q:"What should a building contract include?",
      a:[
        "A written contract should specify: scope of work, material specifications (grade, brand, quantity), payment schedule tied to milestones, completion timeline, and what happens if there are delays or defects.",
-       "Payment milestones are critical. A typical structure is: 20% deposit, 30% on foundation completion, 30% on wall plate level, 20% on completion.",
+       "Payment milestones are critical. A common structure is: 20% deposit, 30% on foundation completion, 30% on wall plate level, 20% on completion. These are examples only \u2014 always agree your own milestone plan in writing with your specific contractor.",
        "Include a 5–10% retention clause: hold back 5–10% of the final payment for 3–6 months after completion to cover any defects that emerge.",
        "If you are building from abroad, nominate a trusted local representative (family member, friend, or Briksafe) to inspect and sign off on each milestone before payment is released.",
      ]},
@@ -3390,8 +3401,13 @@ function AppInner({cartOpen,setCartOpen,currency,setCurrency}){
         setCartOpen(true);
       },100);
     }
+    function openCartHandler(){setCartOpen(true);}
     window.addEventListener('briksafe:loadproject',handler);
-    return()=>window.removeEventListener('briksafe:loadproject',handler);
+    window.addEventListener('briksafe:opencart',openCartHandler);
+    return()=>{
+      window.removeEventListener('briksafe:loadproject',handler);
+      window.removeEventListener('briksafe:opencart',openCartHandler);
+    };
   },[add,clear,setCartOpen]);
 
   return h(Fragment,null,
@@ -3400,15 +3416,15 @@ function AppInner({cartOpen,setCartOpen,currency,setCurrency}){
     h('main',null,
       h(Hero),
       h(Materials,{currency,setCurrency:c=>{setCurrency(c);localStorage.setItem('briksafe_currency',c);}}),
-
       h(TrustHow),
       h(ToolsHub,{currency}),
       h(FaqSection),
       h(SavedProjects,{currency}),
-      h(QuoteForm,{currency})
+      h(QuoteForm,{currency}),
     ),
     h(Footer),
     h(CartSidebar,{open:cartOpen,onClose:()=>setCartOpen(false),currency}),
+    h(MobileSticky,{setCartOpen}),
     // Print-only quote — invisible on screen, shown only when printing
     h('div',{className:"print-quote","aria-hidden":"true"},
       h('div',{className:"pq-header"},
