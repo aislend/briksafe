@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Privacy Policy — Briksafe</title>
+<meta name="description" content="Briksafe Privacy Policy. How we collect, use, and protect your personal data in compliance with UK GDPR and EU GDPR."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg-warm:#f7f5f0;--bg-cool:#f4f7f9;--bg-accent:#eef4f0;
+  --ink-900:#0d1c14;--ink-700:#2d4035;--ink-600:#445c4a;--ink-500:#6b7f71;
+  --ink-400:#96a89b;--ink-300:#c2cec6;--ink-200:#dde5df;--ink-100:#eef2ef;
+  --forest:#1a4731;--forest-mid:#256040;--forest-lt:#3d8c5e;
+  --ff:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --t-xs:0.6875rem;--t-sm:0.8125rem;--t-base:0.9375rem;--t-md:1.0625rem;
+  --t-lg:1.1875rem;--t-xl:1.4375rem;--t-2xl:1.875rem;--t-3xl:2.375rem;
+  --sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
+  --sp-8:32px;--sp-10:40px;--sp-12:48px;
+  --r-sm:4px;--r:6px;--r-md:10px;--r-lg:16px;
+  --bdr:1px solid var(--ink-200);
+  --sh-lg:0 8px 32px rgba(13,28,20,.10),0 2px 8px rgba(13,28,20,.05);
+  --max:1200px;--gutter:clamp(16px,4vw,40px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--ff);font-size:var(--t-base);line-height:1.65;color:var(--ink-700);background:var(--bg);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--ff);font-weight:700;color:var(--ink-900);line-height:1.2;letter-spacing:-0.02em}
+p{color:var(--ink-600);line-height:1.75}
+a{color:var(--forest);text-decoration:none}
+a:hover{text-decoration:underline}
+button{cursor:pointer;border:none;background:none;font-family:var(--ff)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--ink-300);border-radius:3px}
+
+/* ── HEADER ─────────────────────────────────────────────────────────────── */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;background:rgba(255,255,255,0.96);border-bottom:var(--bdr);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hdr-in{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo-mark{width:32px;height:32px;background:var(--forest);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.logo-text{font-size:1.05rem;font-weight:800;color:var(--ink-900);letter-spacing:-0.03em}
+.logo-tag{font-size:.6rem;font-weight:600;color:var(--ink-400);letter-spacing:.06em;text-transform:uppercase;display:block;line-height:1;margin-top:1px}
+.nav{display:none}
+@media(min-width:768px){
+  .nav{display:flex;align-items:center;gap:2px}
+  .nl{font-size:var(--t-sm);font-weight:500;color:var(--ink-500);padding:7px 13px;border-radius:var(--r-sm);transition:color .15s,background .15s;white-space:nowrap;text-decoration:none;display:inline-block}
+  .nl:hover{color:var(--ink-900);background:var(--ink-100);text-decoration:none}
+}
+.hdr-cta{display:flex;align-items:center;gap:8px;font-size:var(--t-sm);font-weight:600;color:var(--forest);padding:8px 14px;border-radius:var(--r);border:1.5px solid var(--ink-200);background:var(--bg);transition:all .15s;text-decoration:none;white-space:nowrap;min-height:44px;justify-content:center}
+.hdr-cta:hover{border-color:var(--forest);background:var(--bg-accent);text-decoration:none}
+.hbg{display:flex;color:var(--ink-700);padding:8px;min-height:44px;min-width:44px;align-items:center;justify-content:center;border-radius:var(--r-sm);cursor:pointer}
+@media(min-width:768px){.hbg{display:none}}
+.mob-nav{position:fixed;top:60px;left:0;right:0;background:#fff;border-bottom:var(--bdr);padding:12px;z-index:99;box-shadow:var(--sh-lg);display:flex;flex-direction:column;gap:2px}
+.mob-nl{display:block;font-size:var(--t-base);font-weight:500;color:var(--ink-600);padding:12px 14px;border-radius:var(--r);min-height:44px;transition:background .15s;text-decoration:none}
+.mob-nl:hover{background:var(--bg-warm);color:var(--ink-900)}
+
+/* ── PAGE HERO ───────────────────────────────────────────────────────────── */
+.page-hero{padding:calc(60px + 48px) var(--gutter) 48px;background:var(--bg-cool);border-bottom:var(--bdr)}
+.page-hero-in{max-width:var(--max);margin:0 auto}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:var(--t-xs);color:var(--ink-400);margin-bottom:20px}
+.breadcrumb a{color:var(--ink-400);text-decoration:none;transition:color .15s}
+.breadcrumb a:hover{color:var(--forest)}
+.breadcrumb-sep{color:var(--ink-300)}
+.page-hero h1{font-size:clamp(1.75rem,4vw,var(--t-3xl));font-weight:800;color:var(--ink-900);letter-spacing:-0.03em;margin-bottom:12px}
+.page-hero p{font-size:var(--t-md);color:var(--ink-500);line-height:1.7;max-width:540px;font-weight:300}
+
+/* ── CONTENT LAYOUT ──────────────────────────────────────────────────────── */
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+.content-wrap{
+  display:grid;grid-template-columns:1fr;
+  gap:48px;padding:64px 0;
+}
+@media(min-width:900px){.content-wrap{grid-template-columns:220px 1fr;gap:64px;align-items:start}}
+
+/* ── SIDEBAR NAV ─────────────────────────────────────────────────────────── */
+.sidebar-nav{
+  position:sticky;top:80px;
+  display:flex;flex-direction:column;gap:2px;
+}
+@media(max-width:899px){.sidebar-nav{display:none}}
+.sidebar-nav-title{font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-400);margin-bottom:12px;padding-left:12px}
+.sn-link{
+  display:block;font-size:var(--t-sm);color:var(--ink-500);
+  padding:7px 12px;border-radius:var(--r-sm);
+  text-decoration:none;transition:all .15s;
+  border-left:2px solid transparent;
+}
+.sn-link:hover{color:var(--ink-900);background:var(--bg-warm);text-decoration:none}
+.sn-link.active{color:var(--forest);border-left-color:var(--forest);font-weight:600}
+
+/* ── PRIVACY CONTENT ─────────────────────────────────────────────────────── */
+.privacy-doc{}
+.updated-badge{
+  display:inline-block;margin-bottom:32px;
+  font-size:var(--t-xs);font-weight:700;
+  color:var(--forest);background:var(--bg-accent);
+  border:1px solid #c8ddd0;padding:5px 14px;border-radius:100px;
+}
+.policy-section{margin-bottom:48px;padding-bottom:48px;border-bottom:var(--bdr)}
+.policy-section:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.policy-section h2{
+  font-size:var(--t-xl);font-weight:800;color:var(--ink-900);
+  letter-spacing:-0.025em;margin-bottom:16px;
+  padding-top:8px;
+}
+.policy-section p{
+  font-size:var(--t-sm);color:var(--ink-600);
+  line-height:1.85;margin-bottom:14px;
+}
+.policy-section p:last-child{margin-bottom:0}
+.policy-section ul,.policy-section ol{
+  margin:12px 0 16px var(--sp-5);
+  display:flex;flex-direction:column;gap:8px;
+}
+.policy-section li{font-size:var(--t-sm);color:var(--ink-600);line-height:1.75}
+.policy-section strong{color:var(--ink-800);font-weight:700}
+.highlight-box{
+  background:var(--bg-accent);border:1px solid #c8ddd0;
+  border-radius:var(--r-lg);padding:20px 24px;margin:20px 0;
+}
+.highlight-box p{font-size:var(--t-sm);color:var(--ink-700);margin-bottom:0}
+.contact-box{
+  background:var(--bg-warm);border:var(--bdr);border-radius:var(--r-lg);
+  padding:24px;margin-top:16px;
+}
+.contact-box p{font-size:var(--t-sm);color:var(--ink-600);margin-bottom:10px}
+.contact-box p:last-child{margin-bottom:0}
+.contact-link{color:var(--forest);font-weight:600}
+
+/* ── FOOTER ──────────────────────────────────────────────────────────────── */
+.footer{background:var(--bg-warm);border-top:var(--bdr);padding:48px 0 32px}
+.footer-in{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.footer-top{display:grid;grid-template-columns:1fr;gap:32px;padding-bottom:32px;border-bottom:var(--bdr);margin-bottom:20px}
+@media(min-width:600px){.footer-top{grid-template-columns:1.5fr 1fr 1fr}}
+.footer-brand{font-size:var(--t-lg);font-weight:800;color:var(--ink-900);letter-spacing:-0.025em;margin-bottom:10px}
+.footer-desc{font-size:var(--t-sm);color:var(--ink-500);line-height:1.65;max-width:280px}
+.fcol-label{font-size:var(--t-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-400);margin-bottom:14px}
+.flinks{display:flex;flex-direction:column;gap:10px}
+.flink{font-size:var(--t-sm);color:var(--ink-500);text-decoration:none;transition:color .15s}
+.flink:hover{color:var(--ink-900)}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-legal{font-size:var(--t-xs);color:var(--ink-400)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr" role="banner">
+  <div class="hdr-in">
+    <a href="index.html" class="logo" aria-label="Briksafe home">
+      <div class="logo-mark">🧱</div>
+      <div>
+        <span class="logo-text">Briksafe</span>
+        <span class="logo-tag">Gambia · Trusted</span>
+      </div>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Main">
+      <a href="index.html" class="nl">Home</a>
+      <a href="index.html#materials" class="nl">Prices</a>
+      <a href="index.html#tools" class="nl">Tools</a>
+      <a href="about.html" class="nl">About</a>
+      <a href="index.html#quote" class="nl">Get a Quote</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a href="index.html#quote" class="hdr-cta">Get a Quote</a>
+      <button class="hbg" id="hbg-btn" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mob-nav" id="mob-nav" style="display:none" aria-label="Mobile navigation">
+    <a href="index.html" class="mob-nl">Home</a>
+    <a href="index.html#materials" class="mob-nl">Prices</a>
+    <a href="index.html#tools" class="mob-nl">Tools</a>
+    <a href="about.html" class="mob-nl">About</a>
+    <a href="index.html#quote" class="mob-nl">Get a Quote</a>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-in">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Privacy Policy</span>
+    </div>
+    <h1>Privacy Policy</h1>
+    <p>How Briksafe collects, uses, and protects your personal data. We keep this plain and specific — no legal jargon.</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="wrap">
+  <div class="content-wrap">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar-nav" aria-label="Policy sections">
+      <div class="sidebar-nav-title">Contents</div>
+      <a href="#who-we-are" class="sn-link active">Who we are</a>
+      <a href="#what-we-collect" class="sn-link">What we collect</a>
+      <a href="#how-we-use" class="sn-link">How we use it</a>
+      <a href="#where-stored" class="sn-link">Where it's stored</a>
+      <a href="#how-long" class="sn-link">How long we keep it</a>
+      <a href="#your-rights" class="sn-link">Your rights</a>
+      <a href="#cookies" class="sn-link">Cookies &amp; tracking</a>
+      <a href="#third-parties" class="sn-link">Third parties</a>
+      <a href="#children" class="sn-link">Children</a>
+      <a href="#changes" class="sn-link">Policy changes</a>
+      <a href="#contact-us" class="sn-link">Contact</a>
+    </aside>
+
+    <!-- DOCUMENT -->
+    <div class="privacy-doc">
+      <div class="updated-badge">Last updated: 1 May 2026</div>
+
+      <div class="policy-section" id="who-we-are">
+        <h2>Who we are</h2>
+        <p>
+          Briksafe is a building materials procurement service for the Gambian diaspora. We operate as an independent procurement agent, not a financial service or licensed broker. We help clients identify and purchase building materials in The Gambia on their behalf.
+        </p>
+        <p>
+          We are based in The Gambia. If you have any questions about this policy or how we handle your data, you can contact us at:
+        </p>
+        <div class="contact-box">
+          <p><strong>Email:</strong> <a href="mailto:hello@briksafe.com" class="contact-link">hello@briksafe.com</a></p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/2203569784" target="_blank" rel="noopener noreferrer" class="contact-link">+220 356 9784</a></p>
+        </div>
+      </div>
+
+      <div class="policy-section" id="what-we-collect">
+        <h2>What data we collect</h2>
+        <p>
+          We only collect personal data when you actively submit a quote request through our website. We do not collect data through tracking pixels, third-party analytics, or passive browsing behaviour.
+        </p>
+        <p>When you submit a quote request, we collect:</p>
+        <ul>
+          <li>Your full name</li>
+          <li>Your WhatsApp phone number (including country code)</li>
+          <li>Your location (country of residence)</li>
+          <li>Your delivery site address in The Gambia</li>
+          <li>Your preferred project timeline (if provided)</li>
+          <li>Any additional notes you include in your submission</li>
+          <li>A summary of the materials in your quote request</li>
+        </ul>
+        <div class="highlight-box">
+          <p>
+            <strong>We do not collect payment card details, bank account information, or any financial data through this website.</strong> Any payment arrangements are discussed and agreed separately, directly over WhatsApp, before any transaction takes place.
+          </p>
+        </div>
+      </div>
+
+      <div class="policy-section" id="how-we-use">
+        <h2>How we use your data</h2>
+        <p>Your information is used solely to fulfil the service you have requested. Specifically:</p>
+        <ul>
+          <li>To review and prepare your quote request</li>
+          <li>To contact you on WhatsApp to confirm pricing and material availability</li>
+          <li>To coordinate materials sourcing and delivery in The Gambia on your behalf</li>
+          <li>To keep an internal record of the transaction for operational purposes</li>
+        </ul>
+        <p>
+          We will never use your data for marketing purposes without your explicit consent. We will never sell, rent, or share your personal information with third parties for commercial purposes.
+        </p>
+        <p>
+          The legal basis for processing your data is <strong>contract performance</strong> — you have submitted a service request and we are processing your data in order to fulfil that request. Where we retain your data for operational records after the transaction is complete, the legal basis is our <strong>legitimate interests</strong> in maintaining accurate business records.
+        </p>
+      </div>
+
+      <div class="policy-section" id="where-stored">
+        <h2>Where your data is stored</h2>
+        <p>
+          Quote request submissions are processed through <strong>Formspree</strong> (formspree.io), a third-party form handling service. Formspree stores form submissions on servers located in the United States and is compliant with standard data protection frameworks. By submitting a quote request, you acknowledge that your data will be transferred to and processed in the United States.
+        </p>
+        <p>
+          You can review Formspree's privacy policy at <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a>.
+        </p>
+        <p>
+          In addition to Formspree, we may retain a copy of your submission in a private, password-protected spreadsheet used by the Briksafe team for operational tracking. This data is only accessible to authorised members of the Briksafe team and is not shared with external parties.
+        </p>
+        <p>
+          Communication about your order takes place over WhatsApp. WhatsApp's own privacy policy governs the handling of those messages and can be found at <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">whatsapp.com/legal/privacy-policy</a>.
+        </p>
+      </div>
+
+      <div class="policy-section" id="how-long">
+        <h2>How long we keep your data</h2>
+        <p>
+          We retain personal data from quote submissions for <strong>up to 12 months</strong> from the date of submission, or until you request deletion — whichever comes first.
+        </p>
+        <p>
+          After this period, personal data is deleted from our internal records. Data held by Formspree is subject to Formspree's own retention policy; you can request deletion directly from Formspree if required.
+        </p>
+        <p>
+          If a transaction results in an ongoing supplier relationship, we may retain non-personal operational data (such as delivery records and material specifications) for longer for legitimate business purposes. This data does not include your personal contact information.
+        </p>
+      </div>
+
+      <div class="policy-section" id="your-rights">
+        <h2>Your rights (GDPR and UK GDPR)</h2>
+        <p>
+          If you are located in the United Kingdom or the European Union, you have the following rights regarding your personal data under UK GDPR and EU GDPR:
+        </p>
+        <ul>
+          <li><strong>Right of access</strong> — You can request a copy of the personal data we hold about you.</li>
+          <li><strong>Right to rectification</strong> — You can ask us to correct any inaccurate or incomplete data.</li>
+          <li><strong>Right to erasure</strong> — You can ask us to delete your personal data. We will comply unless we have a legitimate legal reason to retain it.</li>
+          <li><strong>Right to restrict processing</strong> — You can ask us to pause processing of your data in certain circumstances.</li>
+          <li><strong>Right to data portability</strong> — You can request your data in a commonly used, machine-readable format.</li>
+          <li><strong>Right to object</strong> — You can object to processing based on legitimate interests.</li>
+          <li><strong>Right to withdraw consent</strong> — Where processing is based on consent, you can withdraw it at any time.</li>
+        </ul>
+        <p>
+          To exercise any of these rights, contact us at <a href="mailto:hello@briksafe.com" class="contact-link">hello@briksafe.com</a>. We will respond within 30 days. We will not charge a fee for reasonable requests.
+        </p>
+        <p>
+          If you believe your rights have been violated, you have the right to lodge a complaint with the relevant supervisory authority. In the UK, this is the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>. In EU member states, contact your national data protection authority.
+        </p>
+      </div>
+
+      <div class="policy-section" id="cookies">
+        <h2>Cookies and tracking</h2>
+        <p>
+          This website does not use advertising cookies, third-party tracking pixels, or analytics services that report your behaviour to external parties.
+        </p>
+        <p>
+          We use <strong>localStorage</strong> — browser-based storage on your own device — to save certain preferences locally, including:
+        </p>
+        <ul>
+          <li>Your selected currency (GMD, USD, or GBP) so you don't have to reselect it on each visit</li>
+          <li>Whether you have dismissed the price update notification banner</li>
+          <li>Whether you have dismissed the seasonal price alert</li>
+          <li>Any projects you have saved using the "My Projects" feature</li>
+        </ul>
+        <p>
+          This data is stored entirely on your device and is never transmitted to us or to any third party. Clearing your browser data will remove all locally stored preferences and saved projects.
+        </p>
+      </div>
+
+      <div class="policy-section" id="third-parties">
+        <h2>Third-party services</h2>
+        <p>This website uses the following third-party services:</p>
+        <ul>
+          <li>
+            <strong>Formspree</strong> — processes quote form submissions. Data is transmitted to Formspree's servers on submission.
+            <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">View Formspree's privacy policy</a>.
+          </li>
+          <li>
+            <strong>Google Fonts</strong> — loads the Plus Jakarta Sans typeface. Google may log your IP address when the font is requested.
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">View Google's privacy policy</a>.
+          </li>
+          <li>
+            <strong>Cloudflare Pages</strong> — hosts this website. Cloudflare may process standard server logs including IP addresses for security and performance purposes.
+            <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">View Cloudflare's privacy policy</a>.
+          </li>
+        </ul>
+        <p>
+          We do not use Facebook Pixel, Google Analytics, advertising networks, or any other behavioural tracking services on this website.
+        </p>
+      </div>
+
+      <div class="policy-section" id="children">
+        <h2>Children's data</h2>
+        <p>
+          This service is intended for adults. We do not knowingly collect personal data from anyone under the age of 16. If you believe we have inadvertently received data from a minor, please contact us immediately at <a href="mailto:hello@briksafe.com" class="contact-link">hello@briksafe.com</a> and we will delete it promptly.
+        </p>
+      </div>
+
+      <div class="policy-section" id="changes">
+        <h2>Changes to this policy</h2>
+        <p>
+          We may update this privacy policy from time to time as our practices change or to reflect legal requirements. The date at the top of this page reflects the most recent revision.
+        </p>
+        <p>
+          We will not make material changes to how we use personal data without updating this policy first. If you have an active quote request in progress when a significant change is made, we will inform you directly via WhatsApp.
+        </p>
+        <p>
+          Continued use of the Briksafe website after a policy update constitutes acceptance of the revised policy.
+        </p>
+      </div>
+
+      <div class="policy-section" id="contact-us">
+        <h2>Contact us about this policy</h2>
+        <p>
+          If you have any questions about this privacy policy, how we handle your data, or want to exercise your data rights, please contact us:
+        </p>
+        <div class="contact-box">
+          <p><strong>Email:</strong> <a href="mailto:hello@briksafe.com" class="contact-link">hello@briksafe.com</a></p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/2203569784" target="_blank" rel="noopener noreferrer" class="contact-link">+220 356 9784</a></p>
+          <p style="margin-top:10px;color:var(--ink-400)">We aim to respond to all privacy queries within 5 business days.</p>
+        </div>
+      </div>
+
+    </div><!-- /privacy-doc -->
+  </div><!-- /content-wrap -->
+</div><!-- /wrap -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Briksafe</div>
+        <p class="footer-desc">Helping the Gambian diaspora buy building materials safely, transparently, and confidently.</p>
+      </div>
+      <div>
+        <div class="fcol-label">Navigate</div>
+        <div class="flinks">
+          <a href="index.html" class="flink">Home</a>
+          <a href="index.html#materials" class="flink">Prices</a>
+          <a href="index.html#tools" class="flink">Tools</a>
+          <a href="about.html" class="flink">About</a>
+          <a href="index.html#guide" class="flink">Building Guide</a>
+          <a href="index.html#quote" class="flink">Get a Quote</a>
+        </div>
+      </div>
+      <div>
+        <div class="fcol-label">Contact</div>
+        <div class="flinks">
+          <a href="https://wa.me/2203569784" target="_blank" rel="noopener noreferrer" class="flink" style="color:#25d366;font-weight:700">+220 356 9784</a>
+          <a href="mailto:hello@briksafe.com" class="flink">hello@briksafe.com</a>
+          <a href="privacy.html" class="flink" style="color:var(--forest);font-weight:600">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span class="footer-legal">© 2026 Briksafe. All rights reserved.</span>
+      <span class="footer-legal">Prices are indicative estimates. Final costs confirmed before payment.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const btn=document.getElementById('hbg-btn');
+const nav=document.getElementById('mob-nav');
+btn.addEventListener('click',()=>{
+  const open=nav.style.display==='flex';
+  nav.style.display=open?'none':'flex';
+  btn.setAttribute('aria-expanded',String(!open));
+});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.hdr'))nav.style.display='none';
+});
+
+// Highlight active sidebar section on scroll
+const sections=document.querySelectorAll('.policy-section[id]');
+const links=document.querySelectorAll('.sn-link');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const active=document.querySelector('.sn-link[href="#'+entry.target.id+'"]');
+      if(active)active.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
