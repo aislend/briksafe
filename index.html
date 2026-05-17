@@ -819,40 +819,568 @@ input,select,textarea{font-family:var(--ff)}
 .flink:hover{color:var(--ink-900)}
 .footer-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-3)}
 .footer-legal{font-size:var(--t-xs);color:var(--ink-400);letter-spacing:.01em}
+
+/* ── PRICE CHANGE INDICATORS ───────────────────────────────────────────── */
+.pdelta{
+  display:inline-flex;align-items:center;gap:2px;
+  font-size:.65rem;font-weight:700;letter-spacing:.02em;
+  padding:1px 5px;border-radius:3px;margin-left:5px;
+  vertical-align:middle;white-space:nowrap;
+}
+.pdelta.up{background:#fef2f2;color:#b91c1c}
+.pdelta.dn{background:#f0fdf4;color:#166534}
+.pdelta.nc{background:var(--ink-100);color:var(--ink-400)}
+
+/* ── BUILD COST ESTIMATOR ──────────────────────────────────────────────── */
+.est-sec{background:var(--bg-cool);border-top:var(--bdr)}
+.est-grid{
+  display:grid;grid-template-columns:1fr;
+  gap:var(--sp-6);margin-top:var(--sp-8);
+}
+@media(min-width:900px){.est-grid{grid-template-columns:380px 1fr;gap:var(--sp-10);align-items:start}}
+.est-form-card{
+  background:#fff;border:var(--bdr);border-radius:var(--r-lg);
+  padding:var(--sp-6);box-shadow:var(--sh-sm);
+}
+.est-form-title{
+  font-size:var(--t-lg);font-weight:800;color:var(--ink-900);
+  letter-spacing:-0.025em;margin-bottom:var(--sp-5);
+  padding-bottom:var(--sp-4);border-bottom:var(--bdr);
+}
+.est-field{margin-bottom:var(--sp-4)}
+.est-label{
+  display:block;font-size:var(--t-xs);font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-600);margin-bottom:6px;
+}
+.est-select,.est-input{
+  width:100%;height:44px;padding:0 13px;
+  border:1.5px solid var(--ink-200);border-radius:var(--r);
+  font-size:var(--t-sm);color:var(--ink-900);background:#fff;
+  outline:none;transition:border-color .15s,box-shadow .15s;
+}
+.est-select:focus,.est-input:focus{
+  border-color:var(--forest);
+  box-shadow:0 0 0 3px rgba(26,71,49,.1);
+}
+.est-btn{
+  width:100%;height:48px;
+  background:var(--forest);color:#fff;
+  border-radius:var(--r);font-size:var(--t-sm);font-weight:700;
+  border:none;cursor:pointer;
+  transition:background .15s;margin-top:var(--sp-2);
+}
+.est-btn:hover{background:var(--forest-mid)}
+.est-note{font-size:var(--t-xs);color:var(--ink-400);margin-top:var(--sp-3);line-height:1.6}
+.est-results{display:flex;flex-direction:column;gap:var(--sp-4)}
+.est-summary{
+  background:#fff;border:var(--bdr);border-radius:var(--r-lg);
+  overflow:hidden;box-shadow:var(--sh-sm);
+}
+.est-sum-hdr{
+  background:var(--forest);padding:16px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.est-sum-title{font-size:var(--t-sm);font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.04em;text-transform:uppercase}
+.est-sum-sub{font-size:var(--t-xs);color:rgba(255,255,255,.5)}
+.est-sum-row{
+  padding:13px 20px;border-bottom:var(--bdr);
+  display:grid;grid-template-columns:1fr auto auto;
+  gap:var(--sp-4);align-items:center;
+}
+.est-sum-row:last-of-type{border-bottom:none}
+.est-sum-name{font-size:var(--t-sm);font-weight:600;color:var(--ink-900)}
+.est-sum-qty{font-size:var(--t-xs);color:var(--ink-400);text-align:right;white-space:nowrap}
+.est-sum-price{font-size:var(--t-sm);font-weight:700;color:var(--ink-900);text-align:right;white-space:nowrap;min-width:80px}
+.est-total-row{
+  padding:16px 20px;background:var(--bg-accent);
+  border-top:2px solid #c8ddd0;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.est-total-lbl{font-size:var(--t-base);font-weight:700;color:var(--ink-700)}
+.est-total-val{font-size:var(--t-2xl);font-weight:800;color:var(--ink-900);letter-spacing:-0.03em}
+.est-disclaimer{
+  background:var(--bg-warm);border:var(--bdr);border-radius:var(--r-lg);
+  padding:var(--sp-4) var(--sp-5);
+  font-size:var(--t-xs);color:var(--ink-500);line-height:1.65;
+}
+.est-add-btn{
+  width:100%;height:48px;
+  background:var(--bg);color:var(--forest);
+  border:1.5px solid var(--forest);
+  border-radius:var(--r);font-size:var(--t-sm);font-weight:700;
+  cursor:pointer;transition:all .15s;
+}
+.est-add-btn:hover{background:var(--bg-accent)}
+.est-placeholder{
+  background:#fff;border:var(--bdr);border-radius:var(--r-lg);
+  padding:var(--sp-12);text-align:center;color:var(--ink-400);
+  box-shadow:var(--sh-sm);
+}
+.est-placeholder-icon{font-size:2.5rem;margin-bottom:var(--sp-4);opacity:.3}
+
+/* ── SAVED PROJECTS ────────────────────────────────────────────────────── */
+.proj-sec{background:var(--bg-warm);border-top:var(--bdr)}
+.proj-grid{
+  display:grid;grid-template-columns:1fr;gap:var(--sp-4);
+  margin-top:var(--sp-8);
+}
+@media(min-width:600px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.proj-grid{grid-template-columns:repeat(3,1fr)}}
+.proj-card{
+  background:#fff;border:var(--bdr);border-radius:var(--r-lg);
+  padding:var(--sp-5);
+  display:flex;flex-direction:column;gap:var(--sp-3);
+  box-shadow:var(--sh-xs);
+}
+.proj-card-name{font-size:var(--t-base);font-weight:800;color:var(--ink-900);letter-spacing:-0.02em}
+.proj-card-meta{font-size:var(--t-xs);color:var(--ink-400)}
+.proj-card-total{font-size:var(--t-xl);font-weight:800;color:var(--forest);letter-spacing:-0.025em}
+.proj-card-actions{display:flex;gap:var(--sp-2);margin-top:auto}
+.proj-btn{
+  flex:1;height:36px;border-radius:var(--r-sm);
+  font-size:var(--t-xs);font-weight:700;cursor:pointer;transition:all .15s;
+}
+.proj-btn-load{background:var(--forest);color:#fff;border:none}
+.proj-btn-load:hover{background:var(--forest-mid)}
+.proj-btn-del{background:none;color:var(--ink-400);border:1.5px solid var(--ink-200)}
+.proj-btn-del:hover{color:var(--red);border-color:#fecaca;background:var(--red-pale)}
+.proj-new{
+  background:#fff;border:1.5px dashed var(--ink-300);border-radius:var(--r-lg);
+  padding:var(--sp-5);
+  display:flex;flex-direction:column;gap:var(--sp-3);
+  align-items:flex-start;
+}
+.proj-new-label{font-size:var(--t-sm);font-weight:700;color:var(--ink-700);letter-spacing:-0.01em}
+.proj-new-input{
+  width:100%;height:44px;padding:0 12px;
+  border:1.5px solid var(--ink-200);border-radius:var(--r);
+  font-size:var(--t-sm);color:var(--ink-900);background:#fff;outline:none;
+  transition:border-color .15s;
+}
+.proj-new-input:focus{border-color:var(--forest)}
+.proj-save-btn{
+  height:40px;padding:0 18px;
+  background:var(--forest);color:#fff;
+  border-radius:var(--r);font-size:var(--t-xs);font-weight:700;
+  border:none;cursor:pointer;transition:background .15s;
+}
+.proj-save-btn:hover{background:var(--forest-mid)}
+.proj-save-btn:disabled{opacity:.4;cursor:not-allowed}
+.proj-empty{
+  grid-column:1/-1;
+  text-align:center;padding:var(--sp-10);
+  color:var(--ink-400);font-size:var(--t-sm);
+}
+
+/* ── FAQ / BUILDING GUIDE ──────────────────────────────────────────────── */
+.faq-sec{background:var(--bg)}
+.faq-layout{
+  display:grid;grid-template-columns:1fr;gap:var(--sp-10);
+  margin-top:var(--sp-8);
+}
+@media(min-width:900px){.faq-layout{grid-template-columns:280px 1fr;gap:var(--sp-12);align-items:start}}
+.faq-cats{display:flex;flex-direction:column;gap:var(--sp-1)}
+@media(max-width:899px){.faq-cats{flex-direction:row;flex-wrap:wrap;gap:var(--sp-2)}}
+.faq-cat-btn{
+  padding:9px 14px;border-radius:var(--r);
+  font-size:var(--t-sm);font-weight:600;
+  color:var(--ink-500);background:none;
+  border:none;cursor:pointer;text-align:left;
+  transition:all .15s;
+}
+.faq-cat-btn:hover{background:var(--ink-100);color:var(--ink-900)}
+.faq-cat-btn.on{background:var(--bg-accent);color:var(--forest)}
+.faq-list{display:flex;flex-direction:column;gap:var(--sp-2)}
+.faq-item{
+  background:#fff;border:var(--bdr);border-radius:var(--r-lg);
+  overflow:hidden;transition:box-shadow .15s;
+}
+.faq-item.open{box-shadow:var(--sh-sm)}
+.faq-q{
+  width:100%;padding:var(--sp-5) var(--sp-6);
+  display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);
+  background:none;border:none;cursor:pointer;text-align:left;
+  transition:background .15s;
+}
+.faq-q:hover{background:var(--bg-warm)}
+.faq-q-text{font-size:var(--t-base);font-weight:700;color:var(--ink-900);letter-spacing:-0.01em;line-height:1.4}
+.faq-chevron{
+  flex-shrink:0;color:var(--ink-400);
+  transition:transform .25s;
+}
+.faq-item.open .faq-chevron{transform:rotate(180deg);color:var(--forest)}
+.faq-a{
+  padding:0 var(--sp-6) var(--sp-5);
+  font-size:var(--t-sm);color:var(--ink-600);line-height:1.8;
+  border-top:var(--bdr);padding-top:var(--sp-4);
+}
+.faq-a p{margin-bottom:var(--sp-3)}
+.faq-a p:last-child{margin-bottom:0}
+.faq-a ul{margin:var(--sp-2) 0 var(--sp-3) var(--sp-5);display:flex;flex-direction:column;gap:5px}
+.faq-a li{font-size:var(--t-sm);color:var(--ink-600)}
+.faq-a strong{color:var(--ink-800);font-weight:700}
+
+/* ── PRICE UPDATE BANNER ──────────────────────────────────────────────── */
+.price-banner{
+  background:var(--bg-accent);border-bottom:1.5px solid #c8ddd0;
+  padding:10px var(--gutter);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+.price-banner-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.price-banner-dot{width:8px;height:8px;background:var(--forest-lt);border-radius:50%;flex-shrink:0;animation:pulse 2.5s ease-in-out infinite}
+.price-banner-text{font-size:var(--t-xs);color:var(--ink-700);font-weight:500}
+.price-banner-text strong{font-weight:700;color:var(--forest)}
+.price-banner-dismiss{font-size:var(--t-xs);color:var(--ink-400);background:none;border:none;cursor:pointer;padding:2px 8px;border-radius:var(--r-sm);transition:color .15s}
+.price-banner-dismiss:hover{color:var(--ink-700)}
+
+/* ── SEASONAL WARNING ─────────────────────────────────────────────────── */
+.season-banner{
+  background:#fef3c7;border:1px solid #f6d860;border-radius:var(--r);
+  padding:var(--sp-4) var(--sp-5);
+  display:flex;gap:var(--sp-3);align-items:flex-start;
+  margin-bottom:var(--sp-5);font-size:var(--t-sm);color:#78350f;line-height:1.6;
+}
+.season-banner-close{margin-left:auto;font-size:var(--t-xs);color:#92400e;background:none;border:1px solid #f6d860;cursor:pointer;flex-shrink:0;padding:2px 10px;border-radius:var(--r-sm);transition:background .15s}
+.season-banner-close:hover{background:rgba(0,0,0,.05)}
+
+/* ── REMITTANCE CALCULATOR ────────────────────────────────────────────── */
+.remit-sec{background:var(--bg-warm);border-top:var(--bdr)}
+.remit-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-6);margin-top:var(--sp-8)}
+@media(min-width:900px){.remit-grid{grid-template-columns:1fr 1fr;gap:var(--sp-10);align-items:start}}
+.remit-card{background:#fff;border:var(--bdr);border-radius:var(--r-lg);padding:var(--sp-6);box-shadow:var(--sh-sm)}
+.remit-card-title{font-size:var(--t-lg);font-weight:800;color:var(--ink-900);letter-spacing:-0.025em;margin-bottom:var(--sp-5);padding-bottom:var(--sp-4);border-bottom:var(--bdr)}
+.remit-field{margin-bottom:var(--sp-4)}
+.remit-label{display:block;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-600);margin-bottom:6px}
+.remit-input-wrap{position:relative}
+.remit-prefix{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:var(--t-base);font-weight:700;color:var(--ink-400);pointer-events:none}
+.remit-input{width:100%;height:52px;padding:0 13px 0 32px;border:1.5px solid var(--ink-200);border-radius:var(--r);font-size:var(--t-xl);font-weight:800;color:var(--ink-900);background:#fff;outline:none;letter-spacing:-0.02em;transition:border-color .15s,box-shadow .15s}
+.remit-input:focus{border-color:var(--forest);box-shadow:0 0 0 3px rgba(26,71,49,.1)}
+.remit-select{width:100%;height:44px;padding:0 13px;border:1.5px solid var(--ink-200);border-radius:var(--r);font-size:var(--t-sm);color:var(--ink-900);background:#fff;outline:none;transition:border-color .15s}
+.remit-select:focus{border-color:var(--forest)}
+.remit-result{background:var(--bg-accent);border:1.5px solid #c8ddd0;border-radius:var(--r-lg);padding:var(--sp-5);display:flex;flex-direction:column;gap:var(--sp-3)}
+.remit-result-row{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:var(--sp-3);border-bottom:var(--bdr)}
+.remit-result-row:last-child{border-bottom:none;padding-bottom:0}
+.remit-result-lbl{font-size:var(--t-sm);color:var(--ink-600)}
+.remit-result-val{font-size:var(--t-base);font-weight:800;color:var(--ink-900);letter-spacing:-0.02em}
+.remit-result-val.big{font-size:var(--t-2xl);color:var(--forest);letter-spacing:-0.03em}
+.remit-prov-title{font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-500);margin-bottom:var(--sp-3);margin-top:var(--sp-5)}
+.remit-prov{display:flex;justify-content:space-between;align-items:center;padding:var(--sp-4);background:#fff;border:var(--bdr);border-radius:var(--r-md);margin-bottom:var(--sp-2)}
+.remit-prov-name{font-size:var(--t-sm);font-weight:700;color:var(--ink-900)}
+.remit-prov-detail{font-size:var(--t-xs);color:var(--ink-500)}
+.remit-prov-rate{font-size:var(--t-sm);font-weight:800;color:var(--forest)}
+.remit-note{font-size:var(--t-xs);color:var(--ink-400);margin-top:var(--sp-4);line-height:1.6}
+
+/* ── QUANTITY CALCULATORS ─────────────────────────────────────────────── */
+.calc-sec{background:var(--bg);border-top:var(--bdr)}
+.calc-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:var(--sp-8);margin-bottom:var(--sp-5)}
+.calc-tab{padding:8px 16px;border-radius:100px;font-size:var(--t-xs);font-weight:700;border:1.5px solid var(--ink-200);color:var(--ink-500);background:#fff;cursor:pointer;transition:all .15s}
+.calc-tab:hover{border-color:var(--ink-400);color:var(--ink-800)}
+.calc-tab.on{background:var(--forest);border-color:var(--forest);color:#fff}
+.calc-card{background:#fff;border:var(--bdr);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm)}
+.calc-card-hdr{padding:18px var(--sp-6);background:var(--bg-cool);border-bottom:var(--bdr)}
+.calc-card-title{font-size:var(--t-base);font-weight:800;color:var(--ink-900);letter-spacing:-0.02em;margin-bottom:3px}
+.calc-card-sub{font-size:var(--t-xs);color:var(--ink-500)}
+.calc-body{padding:var(--sp-6)}
+.calc-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--sp-4);margin-bottom:var(--sp-5)}
+.calc-field label{display:block;font-size:var(--t-xs);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-600);margin-bottom:6px}
+.calc-field input,.calc-field select{width:100%;height:44px;padding:0 12px;border:1.5px solid var(--ink-200);border-radius:var(--r);font-size:var(--t-base);font-weight:700;color:var(--ink-900);background:#fff;outline:none;transition:border-color .15s}
+.calc-field input:focus,.calc-field select:focus{border-color:var(--forest)}
+.calc-results{background:var(--bg-accent);border:1.5px solid #c8ddd0;border-radius:var(--r-lg);padding:var(--sp-5);display:flex;flex-direction:column;gap:var(--sp-3)}
+.calc-result-row{display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--sp-3);border-bottom:var(--bdr)}
+.calc-result-row:last-child{border-bottom:none;padding-bottom:0}
+.calc-result-lbl{font-size:var(--t-sm);color:var(--ink-700)}
+.calc-result-val{font-size:var(--t-lg);font-weight:800;color:var(--ink-900);letter-spacing:-0.02em}
+.calc-result-val.hero{font-size:var(--t-2xl);color:var(--forest)}
+.calc-formula{font-size:var(--t-xs);color:var(--ink-400);margin-top:var(--sp-4);line-height:1.6;font-style:italic}
+
+/* ── WHAT HAPPENS NEXT ────────────────────────────────────────────────── */
+.next-sec{background:var(--bg-cool);border-top:var(--bdr)}
+.next-steps{display:flex;flex-direction:column;gap:0;margin-top:var(--sp-8);border:var(--bdr);border-radius:var(--r-lg);overflow:hidden;background:#fff;box-shadow:var(--sh-sm)}
+.next-step{display:flex;gap:var(--sp-5);align-items:flex-start;padding:var(--sp-5) var(--sp-6);border-bottom:var(--bdr)}
+.next-step:last-child{border-bottom:none}
+.next-num{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:var(--t-xs);font-weight:800;margin-top:4px}
+.next-num.done{background:#dcfce7;color:#166534}
+.next-num.active{background:var(--forest);color:#fff;box-shadow:0 0 0 4px var(--bg-accent)}
+.next-num.wait{background:var(--ink-100);color:var(--ink-400)}
+.next-content{flex:1}
+.next-title{font-size:var(--t-base);font-weight:700;color:var(--ink-900);letter-spacing:-0.01em;margin-bottom:4px}
+.next-body{font-size:var(--t-sm);color:var(--ink-500);line-height:1.65}
+.next-time{display:inline-block;margin-top:var(--sp-3);font-size:var(--t-xs);font-weight:700;color:var(--forest);background:var(--bg-accent);border:1px solid #c8ddd0;padding:3px 10px;border-radius:100px}
+
+/* ── COMPARISON ───────────────────────────────────────────────────────── */
+.compare-sec{background:var(--bg-warm);border-top:var(--bdr)}
+.compare-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:var(--sp-8);margin-bottom:var(--sp-5)}
+.compare-tab{padding:8px 18px;border-radius:100px;font-size:var(--t-xs);font-weight:700;border:1.5px solid var(--ink-200);color:var(--ink-500);background:#fff;cursor:pointer;transition:all .15s}
+.compare-tab:hover{border-color:var(--ink-400);color:var(--ink-800)}
+.compare-tab.on{background:var(--forest);border-color:var(--forest);color:#fff}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)}
+@media(max-width:600px){.compare-grid{grid-template-columns:1fr}}
+.compare-col{background:#fff;border:var(--bdr);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xs)}
+.compare-hdr{padding:16px var(--sp-5);border-bottom:var(--bdr)}
+.compare-hdr.best{background:var(--bg-accent);border-bottom:2px solid #c8ddd0}
+.compare-hdr-name{font-size:var(--t-base);font-weight:800;color:var(--ink-900);letter-spacing:-0.02em;margin-bottom:3px}
+.compare-best-tag{display:inline-flex;align-items:center;gap:4px;font-size:var(--t-xs);font-weight:700;color:var(--forest)}
+.compare-rows{display:flex;flex-direction:column}
+.compare-row{padding:12px var(--sp-5);border-bottom:var(--bdr);display:flex;flex-direction:column;gap:3px}
+.compare-row:last-child{border-bottom:none}
+.compare-row-lbl{font-size:var(--t-xs);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-400)}
+.compare-row-val{font-size:var(--t-sm);font-weight:600;color:var(--ink-900);line-height:1.45}
+.compare-footnote{font-size:var(--t-xs);color:var(--ink-400);margin-top:var(--sp-4);line-height:1.6;font-style:italic;text-align:center}
+
+/* ── PRINT ────────────────────────────────────────────────────────────── */
+.print-quote{display:none}
+@media print{
+  .hdr,.cart-btn,.hbg,.nav,.add-btn,.mc-add,.hero,.how-sec,.trust-sec,
+  .est-sec,.faq-sec,.remit-sec,.calc-sec,.compare-sec,.next-sec,.proj-sec,
+  .form-sec,.footer,.price-banner,.season-banner,.cov,.csid,.toast,
+  .mob-nav{display:none!important}
+  .print-quote{display:block!important}
+  body{font-size:11pt;color:#000;font-family:Arial,sans-serif}
+  .pq-header{margin-bottom:20pt}
+  .pq-brand{font-size:18pt;font-weight:700;margin-bottom:4pt}
+  .pq-meta{font-size:9pt;color:#555}
+  .pq-table{width:100%;border-collapse:collapse;margin:14pt 0}
+  .pq-table th{background:#f0f0f0;padding:7pt 10pt;font-size:8pt;text-align:left;border:1pt solid #ccc;text-transform:uppercase;letter-spacing:.05em}
+  .pq-table td{padding:7pt 10pt;border:1pt solid #ddd;font-size:9pt}
+  .pq-total{font-size:13pt;font-weight:700;text-align:right;margin-top:10pt;padding-top:6pt;border-top:2pt solid #000}
+  .pq-footer{margin-top:20pt;font-size:8pt;color:#888;border-top:1pt solid #ddd;padding-top:6pt}
+}
+
+/* ── SHOW MORE / EXPAND TOGGLE ───────────────────────────────────────── */
+.expand-toggle{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:var(--sp-4) var(--sp-5);
+  background:var(--bg-warm);border:var(--bdr);border-radius:var(--r-lg);
+  font-size:var(--t-sm);font-weight:700;color:var(--forest);
+  cursor:pointer;transition:all .15s;margin-top:var(--sp-4);
+}
+.expand-toggle:hover{background:var(--bg-accent);border-color:#c8ddd0}
+.expand-chevron{transition:transform .25s}
+.expand-chevron.open{transform:rotate(180deg)}
+
+/* ── TABBED TOOLS SECTION ────────────────────────────────────────────── */
+.tools-sec{background:var(--bg-cool);border-top:var(--bdr)}
+.tools-tabs{
+  display:flex;gap:0;margin-top:var(--sp-8);margin-bottom:0;
+  border:var(--bdr);border-radius:var(--r-lg) var(--r-lg) 0 0;
+  overflow:hidden;background:#fff;flex-wrap:wrap;
+}
+.tools-tab{
+  flex:1;min-width:120px;padding:var(--sp-4) var(--sp-3);
+  font-size:var(--t-xs);font-weight:700;letter-spacing:.02em;
+  color:var(--ink-400);background:var(--bg-cool);
+  border:none;border-right:var(--bdr);border-bottom:var(--bdr);
+  cursor:pointer;transition:all .15s;text-align:center;
+  white-space:nowrap;
+}
+.tools-tab:last-child{border-right:none}
+.tools-tab:hover{color:var(--ink-700);background:var(--bg-warm)}
+.tools-tab.on{background:#fff;color:var(--forest);border-bottom:2px solid var(--forest);font-weight:800}
+.tools-panel{
+  background:#fff;border:var(--bdr);border-top:none;
+  border-radius:0 0 var(--r-lg) var(--r-lg);
+  padding:var(--sp-6);box-shadow:var(--sh-sm);
+}
+@media(max-width:600px){
+  .tools-tab{font-size:.65rem;padding:var(--sp-3) var(--sp-2);min-width:80px}
+}
+
+/* ── COMPACT TRUST + HOW ─────────────────────────────────────────────── */
+.trust-how-sec{background:var(--bg-warm);border-top:var(--bdr)}
+.th-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-10);margin-top:var(--sp-8)}
+@media(min-width:900px){.th-grid{grid-template-columns:1fr 1fr;gap:var(--sp-12);align-items:start}}
+.how-steps-compact{display:flex;flex-direction:column;gap:0}
+.how-step-c{
+  display:flex;gap:var(--sp-4);align-items:flex-start;
+  padding:var(--sp-4) 0;border-bottom:var(--bdr);
+}
+.how-step-c:last-child{border-bottom:none}
+.how-step-c-num{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  background:var(--forest);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:var(--t-xs);font-weight:800;margin-top:2px;
+}
+.how-step-c h3{font-size:var(--t-sm);font-weight:700;color:var(--ink-900);margin-bottom:3px;letter-spacing:-0.01em}
+.how-step-c p{font-size:var(--t-xs);color:var(--ink-500);line-height:1.6}
+.trust-points{display:flex;flex-direction:column;gap:0}
+.trust-point{
+  display:flex;gap:var(--sp-3);align-items:flex-start;
+  padding:var(--sp-4) 0;border-bottom:var(--bdr);
+}
+.trust-point:last-child{border-bottom:none}
+.trust-point-icon{color:var(--forest);flex-shrink:0;margin-top:2px}
+.trust-point h4{font-size:var(--t-sm);font-weight:700;color:var(--ink-900);margin-bottom:2px}
+.trust-point p{font-size:var(--t-xs);color:var(--ink-500);line-height:1.6}
+.testimonial-compact{
+  background:var(--forest);border-radius:var(--r-lg);
+  padding:var(--sp-5) var(--sp-6);margin-top:var(--sp-5);
+}
+.tq-compact{font-size:var(--t-sm);color:rgba(255,255,255,.82);line-height:1.75;font-style:italic;margin-bottom:var(--sp-4)}
+
+/* ── COMPACT TIMELINE STRIP ──────────────────────────────────────────── */
+.timeline-strip{
+  display:flex;gap:0;margin-top:var(--sp-6);
+  border:var(--bdr);border-radius:var(--r-lg);overflow:hidden;
+  background:#fff;flex-wrap:wrap;
+}
+.ts-item{
+  flex:1;min-width:120px;padding:var(--sp-4) var(--sp-3);
+  border-right:var(--bdr);position:relative;
+}
+.ts-item:last-child{border-right:none}
+.ts-item-num{
+  width:24px;height:24px;border-radius:50%;
+  font-size:.65rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:var(--sp-2);
+}
+.ts-item-num.s-done{background:#dcfce7;color:#166534}
+.ts-item-num.s-now{background:var(--forest);color:#fff}
+.ts-item-num.s-wait{background:var(--ink-100);color:var(--ink-400)}
+.ts-item-title{font-size:var(--t-xs);font-weight:700;color:var(--ink-900);line-height:1.3;margin-bottom:2px}
+.ts-item-time{font-size:.65rem;color:var(--forest);font-weight:700}
+
+/* ── FAQ COMPACT ─────────────────────────────────────────────────────── */
+.faq-show-more{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  width:100%;padding:var(--sp-4);
+  background:none;border:var(--bdr);border-radius:var(--r-lg);
+  font-size:var(--t-sm);font-weight:700;color:var(--ink-500);
+  cursor:pointer;margin-top:var(--sp-3);transition:all .15s;
+}
+.faq-show-more:hover{color:var(--forest);border-color:#c8ddd0;background:var(--bg-accent)}
+
+/* ── ABOUT SECTION ────────────────────────────────────────────────────── */
+.about-sec{background:var(--bg);border-top:var(--bdr)}
+.about-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-10);margin-top:var(--sp-8)}
+@media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr;gap:var(--sp-16);align-items:start}}
+.about-story p{font-size:var(--t-base);color:var(--ink-600);line-height:1.85;margin-bottom:var(--sp-4)}
+.about-story p:last-child{margin-bottom:0}
+.about-founder{background:var(--bg-warm);border:var(--bdr);border-radius:var(--r-lg);padding:var(--sp-6);display:flex;flex-direction:column;gap:var(--sp-4)}
+.about-founder-top{display:flex;align-items:center;gap:var(--sp-4)}
+.about-avatar{width:64px;height:64px;border-radius:50%;background:var(--forest);color:#fff;font-size:var(--t-xl);font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-0.02em}
+.about-founder-name{font-size:var(--t-lg);font-weight:800;color:var(--ink-900);letter-spacing:-0.025em}
+.about-founder-role{font-size:var(--t-xs);color:var(--forest);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.about-founder-bio{font-size:var(--t-sm);color:var(--ink-600);line-height:1.75}
+.about-founder-contact{display:flex;gap:var(--sp-3);flex-wrap:wrap;padding-top:var(--sp-4);border-top:var(--bdr);align-items:center}
+
+/* ── PRIVACY POLICY ───────────────────────────────────────────────────── */
+.privacy-sec{background:var(--bg-cool);border-top:var(--bdr)}
+.privacy-content{max-width:720px;margin-top:var(--sp-8)}
+.privacy-content h3{font-size:var(--t-base);font-weight:700;color:var(--ink-900);letter-spacing:-0.01em;margin:var(--sp-6) 0 var(--sp-3)}
+.privacy-content h3:first-child{margin-top:0}
+.privacy-content p,.privacy-content li{font-size:var(--t-sm);color:var(--ink-600);line-height:1.8;margin-bottom:var(--sp-3)}
+.privacy-content ul{margin-left:var(--sp-5);margin-bottom:var(--sp-4);display:flex;flex-direction:column;gap:5px}
+.privacy-content a{color:var(--forest);font-weight:600}
+.privacy-updated{display:inline-block;margin-bottom:var(--sp-5);font-size:var(--t-xs);font-weight:700;color:var(--forest);background:var(--bg-accent);border:1px solid #c8ddd0;padding:4px 12px;border-radius:100px}
+
+/* ── MOBILE STICKY CTA ────────────────────────────────────────────────── */
+.mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:150;background:#fff;border-top:var(--bdr);padding:var(--sp-3) var(--sp-4);box-shadow:0 -4px 20px rgba(13,28,20,.1)}
+@media(max-width:767px){.mob-sticky{display:flex;gap:var(--sp-3);align-items:center}}
+.mob-sticky-quote{flex:1;height:48px;background:var(--forest);color:#fff;border-radius:var(--r);font-size:var(--t-sm);font-weight:700;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.mob-sticky-wa{width:48px;height:48px;background:#25d366;color:#fff;border-radius:var(--r);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0}
+@media(max-width:767px){.footer{padding-bottom:calc(var(--sp-8) + 72px)}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script>
 'use strict';
-const{createElement:h,useState,useCallback,useMemo,createContext,useContext,useEffect}=React;
+const{createElement:h,useState,useCallback,useMemo,createContext,useContext,useEffect,Fragment}=React;
 
 /* ── DATA ──────────────────────────────────────────────────────────────── */
 const MATS=[
-  {id:"c1",cat:"Cement",        name:"Portland Cement 50kg",              unit:"50kg bag",      gmd:525,  upd:"2026-04-20",note:"Standard OPC, widely available"},
-  {id:"c2",cat:"Cement",        name:"Rapid Set Cement 50kg",             unit:"50kg bag",      gmd:610,  upd:"2026-04-20",note:"For fast-setting concrete work"},
-  {id:"b1",cat:"Blocks",        name:'Hollow Concrete Block 9"',          unit:"piece",         gmd:42,   upd:"2026-04-18",note:"Standard hollow block for walls"},
-  {id:"b2",cat:"Blocks",        name:'Solid Concrete Block 9"',           unit:"piece",         gmd:55,   upd:"2026-04-18",note:"Denser, for load-bearing walls"},
-  {id:"b3",cat:"Blocks",        name:'Hollow Concrete Block 6"',          unit:"piece",         gmd:34,   upd:"2026-04-18",note:"Partition & non-load-bearing"},
-  {id:"s1",cat:"Steel",         name:"Rebar Y12 \u00d7 6m",               unit:"bar",           gmd:680,  upd:"2026-05-01",note:"12mm rebar for structural use"},
-  {id:"s2",cat:"Steel",         name:"Rebar Y16 \u00d7 6m",               unit:"bar",           gmd:1120, upd:"2026-05-01",note:"16mm for columns and beams"},
-  {id:"s3",cat:"Steel",         name:"Rebar Y8 \u00d7 6m",                unit:"bar",           gmd:340,  upd:"2026-05-01",note:"Light reinforcement and ties"},
-  {id:"s4",cat:"Steel",         name:"Binding Wire 1kg",                  unit:"roll",          gmd:95,   upd:"2026-04-28",note:"For tying rebar cages"},
-  {id:"r1",cat:"Roofing",       name:"Long Span Sheet 0.55mm — 3m",       unit:"sheet",         gmd:920,  upd:"2026-04-22",note:"Galvanised corrugated sheet"},
-  {id:"r2",cat:"Roofing",       name:"Long Span Sheet 0.55mm — 6m",       unit:"sheet",         gmd:1750, upd:"2026-04-22",note:"Full length, fewer joints"},
-  {id:"r3",cat:"Roofing",       name:"Ridge Cap 3m",                      unit:"piece",         gmd:480,  upd:"2026-04-22",note:"Galvanised ridge capping"},
-  {id:"r4",cat:"Roofing",       name:'Roofing Nails 3" (1kg)',             unit:"kg",            gmd:75,   upd:"2026-04-10",note:"Twisted shank for grip"},
-  {id:"g1",cat:"Sand & Gravel", name:"Sharp Sand",                        unit:"ton",           gmd:1400, upd:"2026-04-25",note:"River sand for concrete mixes"},
-  {id:"g2",cat:"Sand & Gravel", name:"Plaster Sand",                      unit:"ton",           gmd:1150, upd:"2026-04-25",note:"Fine sand for plastering"},
-  {id:"g3",cat:"Sand & Gravel", name:'Gravel / Aggregate 3/4"',            unit:"ton",           gmd:1650, upd:"2026-04-25",note:"Crushed stone for concrete"},
-  {id:"g4",cat:"Sand & Gravel", name:"Laterite Fill",                     unit:"ton",           gmd:950,  upd:"2026-04-15",note:"For site filling and levelling"},
-  {id:"t1",cat:"Timber",        name:"2\u00d74 Pine Timber 3m",            unit:"piece",         gmd:285,  upd:"2026-04-20",note:"For formwork and framing"},
-  {id:"t2",cat:"Timber",        name:"Shuttering Plywood 18mm",           unit:"sheet",         gmd:1850, upd:"2026-04-20",note:"Formwork plywood, 8\u00d74ft"},
-  {id:"m1",cat:"Finishing",     name:"Ceramic Floor Tile 60\u00d760cm",   unit:"box (4 tiles)", gmd:1250, upd:"2026-04-12",note:"Approx 1.44m\u00b2 per box"},
-  {id:"m2",cat:"Finishing",     name:"Emulsion Wall Paint 20L",           unit:"bucket",        gmd:2200, upd:"2026-04-12",note:"Interior emulsion, white base"},
-  {id:"m3",cat:"Finishing",     name:"Plasticiser Admixture 5L",          unit:"container",     gmd:380,  upd:"2026-03-30",note:"Improves concrete workability"},
+  /* ── STRUCTURAL MATERIALS ───────────────────────────────────────────── */
+  {id:"sm01",cat:"Structural Materials", name:"Portland Cement 50kg",              unit:"50kg bag",      gmd:525,  upd:"2026-05-01",note:"Standard OPC — foundations, columns, slabs",delta:3},
+  {id:"sm02",cat:"Structural Materials", name:"Rapid Set Cement 50kg",             unit:"50kg bag",      gmd:610,  upd:"2026-05-01",note:"Fast-setting mix for urgent pours",delta:0},
+  {id:"sm03",cat:"Structural Materials", name:'Hollow Concrete Block 9"',          unit:"piece",         gmd:42,   upd:"2026-05-01",note:"Standard hollow block for external walls",delta:5},
+  {id:"sm04",cat:"Structural Materials", name:'Solid Concrete Block 9"',           unit:"piece",         gmd:55,   upd:"2026-05-01",note:"Load-bearing walls and columns",delta:5},
+  {id:"sm05",cat:"Structural Materials", name:'Hollow Concrete Block 6"',          unit:"piece",         gmd:34,   upd:"2026-05-01",note:"Internal partition walls",delta:0},
+  {id:"sm06",cat:"Structural Materials", name:"Rebar Y12 \u00d7 6m",               unit:"bar",           gmd:680,  upd:"2026-05-01",note:"12mm deformed bar — general structural use",delta:-2},
+  {id:"sm07",cat:"Structural Materials", name:"Rebar Y16 \u00d7 6m",               unit:"bar",           gmd:1120, upd:"2026-05-01",note:"16mm deformed bar — columns and beams",delta:-2},
+  {id:"sm08",cat:"Structural Materials", name:"Rebar Y8 \u00d7 6m",                unit:"bar",           gmd:340,  upd:"2026-05-01",note:"8mm bar — ties and light reinforcement",delta:0},
+  {id:"sm09",cat:"Structural Materials", name:"Binding Wire 1kg",                  unit:"roll",          gmd:95,   upd:"2026-05-01",note:"For tying rebar cages",delta:0},
+  {id:"sm10",cat:"Structural Materials", name:"Sharp Sand",                        unit:"ton",           gmd:1400, upd:"2026-05-01",note:"River sand for structural concrete mixes",delta:8},
+  {id:"sm11",cat:"Structural Materials", name:"Plaster Sand",                      unit:"ton",           gmd:1150, upd:"2026-05-01",note:"Fine sand for plastering and rendering",delta:6},
+  {id:"sm12",cat:"Structural Materials", name:'Gravel / Aggregate 3/4"',            unit:"ton",           gmd:1650, upd:"2026-05-01",note:"Crushed stone for concrete",delta:4},
+  {id:"sm13",cat:"Structural Materials", name:"Laterite Fill",                     unit:"ton",           gmd:950,  upd:"2026-05-01",note:"Site filling and levelling",delta:0},
+  {id:"sm14",cat:"Structural Materials", name:"2\u00d74 Pine Timber 3m",            unit:"piece",         gmd:285,  upd:"2026-05-01",note:"Formwork and framing",delta:-3},
+  {id:"sm15",cat:"Structural Materials", name:"Shuttering Plywood 18mm",           unit:"sheet",         gmd:1850, upd:"2026-05-01",note:"Formwork plywood, 8\u00d74ft",delta:-3},
+  {id:"sm16",cat:"Structural Materials", name:"Plasticiser Admixture 5L",          unit:"container",     gmd:380,  upd:"2026-05-01",note:"Improves concrete workability and strength",delta:0},
+
+  /* ── ROOFING ────────────────────────────────────────────────────────── */
+  {id:"rf01",cat:"Roofing",              name:"Long Span Roof Sheet 0.55mm — 3m",  unit:"sheet",         gmd:920,  upd:"2026-05-01",note:"Galvanised corrugated iron sheet",delta:6},
+  {id:"rf02",cat:"Roofing",              name:"Long Span Roof Sheet 0.55mm — 6m",  unit:"sheet",         gmd:1750, upd:"2026-05-01",note:"Full-length sheet, fewer overlaps",delta:6},
+  {id:"rf03",cat:"Roofing",              name:"Long Span Roof Sheet 0.4mm — 3m",   unit:"sheet",         gmd:720,  upd:"2026-05-01",note:"Economy gauge corrugated sheet",delta:4},
+  {id:"rf04",cat:"Roofing",              name:"Ridge Cap 3m",                      unit:"piece",         gmd:480,  upd:"2026-05-01",note:"Galvanised capping for roof ridge",delta:0},
+  {id:"rf05",cat:"Roofing",              name:'Roofing Nails 3" (1kg)',             unit:"kg",            gmd:75,   upd:"2026-05-01",note:"Twisted shank nails for roof sheets",delta:0},
+  {id:"rf06",cat:"Roofing",              name:"Roofing Screws with Washer (100pk)", unit:"pack",          gmd:220,  upd:"2026-05-01",note:"Self-drilling screws for metal roofing",delta:5},
+  {id:"rf07",cat:"Roofing",              name:"Roof Timber Batten 2\u00d72 — 3m",   unit:"piece",         gmd:160,  upd:"2026-05-01",note:"Timber purlins to support roof sheets",delta:-4},
+  {id:"rf08",cat:"Roofing",              name:"Polythene Damp Proof Membrane",     unit:"roll (50m)",    gmd:1100, upd:"2026-05-01",note:"Underlay moisture barrier for slab and walls",delta:0},
+
+  /* ── ELECTRICAL ─────────────────────────────────────────────────────── */
+  {id:"el01",cat:"Electrical",           name:"2.5mm\u00b2 Twin & Earth Cable",     unit:"roll (50m)",    gmd:2800, upd:"2026-05-01",note:"Standard domestic wiring cable",delta:7},
+  {id:"el02",cat:"Electrical",           name:"4mm\u00b2 Single Core Cable",        unit:"roll (50m)",    gmd:3200, upd:"2026-05-01",note:"For consumer unit and heavy circuits",delta:7},
+  {id:"el03",cat:"Electrical",           name:"PVC Conduit 20mm — 3m",             unit:"length",        gmd:95,   upd:"2026-05-01",note:"Surface or concealed cable protection",delta:0},
+  {id:"el04",cat:"Electrical",           name:"Single Wall Socket (13A)",          unit:"piece",         gmd:180,  upd:"2026-05-01",note:"Flush-mount single outlet",delta:0},
+  {id:"el05",cat:"Electrical",           name:"Double Wall Socket (13A)",          unit:"piece",         gmd:280,  upd:"2026-05-01",note:"Flush-mount double outlet",delta:0},
+  {id:"el06",cat:"Electrical",           name:"Single Light Switch",               unit:"piece",         gmd:120,  upd:"2026-05-01",note:"1-gang flush light switch",delta:0},
+  {id:"el07",cat:"Electrical",           name:"Consumer Unit — 8 Way",             unit:"unit",          gmd:3500, upd:"2026-05-01",note:"Main distribution board with MCBs",delta:3},
+  {id:"el08",cat:"Electrical",           name:"LED Ceiling Light Fitting",         unit:"piece",         gmd:450,  upd:"2026-05-01",note:"Surface-mount LED panel, 18W",delta:-8},
+  {id:"el09",cat:"Electrical",           name:"MCB Circuit Breaker 20A",           unit:"piece",         gmd:320,  upd:"2026-05-01",note:"Miniature circuit breaker for branch circuits",delta:0},
+
+  /* ── PLUMBING ───────────────────────────────────────────────────────── */
+  {id:"pl01",cat:"Plumbing",             name:"uPVC Pipe 1/2\" — 3m",              unit:"length",        gmd:165,  upd:"2026-05-01",note:"Cold water supply pipe",delta:0},
+  {id:"pl02",cat:"Plumbing",             name:"uPVC Pipe 1\" — 3m",               unit:"length",        gmd:260,  upd:"2026-05-01",note:"Main supply and distribution",delta:0},
+  {id:"pl03",cat:"Plumbing",             name:"uPVC Pipe 2\" — 3m",               unit:"length",        gmd:420,  upd:"2026-05-01",note:"Soil and waste pipe",delta:3},
+  {id:"pl04",cat:"Plumbing",             name:"uPVC Pipe 4\" — 3m",               unit:"length",        gmd:680,  upd:"2026-05-01",note:"Underground drainage and sewer",delta:3},
+  {id:"pl05",cat:"Plumbing",             name:"Ball Valve 1/2\"",                  unit:"piece",         gmd:220,  upd:"2026-05-01",note:"Isolation valve for water supply",delta:0},
+  {id:"pl06",cat:"Plumbing",             name:"Water Storage Tank 1000L",          unit:"unit",          gmd:8500, upd:"2026-05-01",note:"Polyethylene overhead or ground tank",delta:5},
+  {id:"pl07",cat:"Plumbing",             name:"Wash Hand Basin (ceramic)",         unit:"unit",          gmd:3200, upd:"2026-05-01",note:"Wall-mounted basin with pedestal",delta:0},
+  {id:"pl08",cat:"Plumbing",             name:"WC Toilet Suite",                   unit:"unit",          gmd:5500, upd:"2026-05-01",note:"Close-coupled cistern and pan",delta:0},
+  {id:"pl09",cat:"Plumbing",             name:"Shower Tray & Mixer Set",           unit:"set",           gmd:6800, upd:"2026-05-01",note:"Acrylic tray with mixer and head",delta:4},
+  {id:"pl10",cat:"Plumbing",             name:"uPVC Elbow 90\u00b0 1/2\"",          unit:"piece",         gmd:35,   upd:"2026-05-01",note:"Standard 90-degree pipe fitting",delta:0},
+  {id:"pl11",cat:"Plumbing",             name:"Submersible Water Pump 0.5HP",      unit:"unit",          gmd:7200, upd:"2026-05-01",note:"For borehole or storage tank pumping",delta:6},
+
+  /* ── DOORS & WINDOWS ────────────────────────────────────────────────── */
+  {id:"dw01",cat:"Doors & Windows",      name:"Solid Timber Door 2.1m \u00d7 0.9m", unit:"unit",         gmd:9500, upd:"2026-05-01",note:"Hardwood, pre-hung with frame",delta:4},
+  {id:"dw02",cat:"Doors & Windows",      name:"Flush HDF Door 2.1m \u00d7 0.9m",    unit:"unit",         gmd:5200, upd:"2026-05-01",note:"Interior HDF skin door with frame",delta:0},
+  {id:"dw03",cat:"Doors & Windows",      name:"Steel Security Door 2.1m \u00d7 0.9m",unit:"unit",        gmd:14500,upd:"2026-05-01",note:"Powder-coated steel, anti-crowbar locks",delta:8},
+  {id:"dw04",cat:"Doors & Windows",      name:"Aluminium Casement Window 1.2\u00d71.2m",unit:"unit",     gmd:7800, upd:"2026-05-01",note:"Single-frame aluminium with glass",delta:5},
+  {id:"dw05",cat:"Doors & Windows",      name:"Aluminium Louvre Window 0.6\u00d70.9m", unit:"unit",      gmd:3800, upd:"2026-05-01",note:"Adjustable glass louvre blades",delta:5},
+  {id:"dw06",cat:"Doors & Windows",      name:"Door Lock & Handle Set",            unit:"set",           gmd:850,  upd:"2026-05-01",note:"Mortice lock, lever handle, 3 keys",delta:0},
+  {id:"dw07",cat:"Doors & Windows",      name:"Door Hinge (pair)",                 unit:"pair",          gmd:120,  upd:"2026-05-01",note:"100mm steel butt hinges",delta:0},
+  {id:"dw08",cat:"Doors & Windows",      name:"Window Burglar Bar Set",            unit:"set",           gmd:2200, upd:"2026-05-01",note:"Welded steel bar guard for 1.2\u00d71.2m window",delta:3},
+
+  /* ── HARDWARE & TOOLS ───────────────────────────────────────────────── */
+  {id:"hw01",cat:"Hardware & Tools",     name:"OPC Wire Mesh 1m \u00d7 30m Roll",   unit:"roll",          gmd:4200, upd:"2026-05-01",note:"Galvanised mesh for plastering and fencing",delta:2},
+  {id:"hw02",cat:"Hardware & Tools",     name:"Builder's Wheelbarrow",             unit:"unit",          gmd:2800, upd:"2026-05-01",note:"Steel tray, pneumatic tyre",delta:0},
+  {id:"hw03",cat:"Hardware & Tools",     name:"Shovel / Spade",                    unit:"piece",         gmd:550,  upd:"2026-05-01",note:"Long-handled steel spade",delta:0},
+  {id:"hw04",cat:"Hardware & Tools",     name:"Concrete Mixing Hoe",               unit:"piece",         gmd:420,  upd:"2026-05-01",note:"Heavy-duty mixing hoe",delta:0},
+  {id:"hw05",cat:"Hardware & Tools",     name:"Mason's Trowel",                    unit:"piece",         gmd:280,  upd:"2026-05-01",note:"Steel pointing trowel, 11-inch",delta:0},
+  {id:"hw06",cat:"Hardware & Tools",     name:"Plumb Bob & Line",                  unit:"set",           gmd:180,  upd:"2026-05-01",note:"For vertical alignment checking",delta:0},
+  {id:"hw07",cat:"Hardware & Tools",     name:'Galvanised Wire Nails 3" (1kg)',     unit:"kg",            gmd:85,   upd:"2026-05-01",note:"General-purpose construction nails",delta:0},
+  {id:"hw08",cat:"Hardware & Tools",     name:"Ceramic Floor Tile 60\u00d760cm",   unit:"box (4 tiles)", gmd:1250, upd:"2026-05-01",note:"Standard floor tile, approx 1.44m\u00b2/box",delta:3},
+  {id:"hw09",cat:"Hardware & Tools",     name:"Emulsion Wall Paint 20L",           unit:"bucket",        gmd:2200, upd:"2026-05-01",note:"Interior emulsion, white base",delta:5},
+  {id:"hw10",cat:"Hardware & Tools",     name:"Gloss Paint 4L",                    unit:"tin",           gmd:980,  upd:"2026-05-01",note:"Oil-based gloss for doors and trim",delta:5},
+  {id:"hw11",cat:"Hardware & Tools",     name:"Tile Adhesive 20kg",                unit:"bag",           gmd:620,  upd:"2026-05-01",note:"Cement-based tile fixing adhesive",delta:2},
+  {id:"hw12",cat:"Hardware & Tools",     name:"Grout — White 5kg",                 unit:"bag",           gmd:380,  upd:"2026-05-01",note:"For floor and wall tile jointing",delta:0},
+
+  /* ── LANDSCAPING & EXTERNAL WORK ────────────────────────────────────── */
+  {id:"lx01",cat:"Landscaping & External",name:"Precast Concrete Kerb 1m",         unit:"piece",         gmd:320,  upd:"2026-05-01",note:"Road edging and driveway kerb",delta:0},
+  {id:"lx02",cat:"Landscaping & External",name:"Concrete Paving Slab 400\u00d7400mm",unit:"piece",       gmd:185,  upd:"2026-05-01",note:"Outdoor walkway and patio paving",delta:4},
+  {id:"lx03",cat:"Landscaping & External",name:"Chain Link Fencing 1.8m (per metre)",unit:"metre",       gmd:480,  upd:"2026-05-01",note:"Galvanised chain link with posts",delta:6},
+  {id:"lx04",cat:"Landscaping & External",name:"Fence Post — Angle Iron 1.8m",     unit:"piece",         gmd:650,  upd:"2026-05-01",note:"50\u00d750mm galvanised angle iron post",delta:4},
+  {id:"lx05",cat:"Landscaping & External",name:"Gate — Steel Single Leaf 1m wide",  unit:"unit",         gmd:8500, upd:"2026-05-01",note:"Powder-coated steel, 1.8m tall",delta:8},
+  {id:"lx06",cat:"Landscaping & External",name:"Gate — Steel Double Leaf 3m wide",  unit:"unit",         gmd:18500,upd:"2026-05-01",note:"Driveway gate, powder-coated steel",delta:8},
+  {id:"lx07",cat:"Landscaping & External",name:"Septic Tank 2000L (precast)",       unit:"unit",         gmd:22000,upd:"2026-05-01",note:"Reinforced concrete, with covers",delta:5},
+  {id:"lx08",cat:"Landscaping & External",name:"Soakaway / Soak Pit Rings",         unit:"ring",         gmd:1800, upd:"2026-05-01",note:"Precast concrete drainage ring, 900mm dia",delta:5},
+  {id:"lx09",cat:"Landscaping & External",name:"Borehole Casing Pipe 4\" (3m)",     unit:"length",       gmd:3200, upd:"2026-05-01",note:"uPVC slotted casing for water boreholes",delta:0},
+  {id:"lx10",cat:"Landscaping & External",name:"Overhead Tank Stand (steel, 2m)",   unit:"unit",         gmd:12000,upd:"2026-05-01",note:"Fabricated steel stand for 1000L tank",delta:3},
 ];
-const CATS=["All",...[...new Set(MATS.map(m=>m.cat))]];
+const CATS=["All","Structural Materials","Roofing","Electrical","Plumbing","Doors & Windows","Hardware & Tools","Landscaping & External"];
 const RATES={GMD:1,USD:0.0148,GBP:0.0117};
 const SYMS={GMD:"D",USD:"$",GBP:"\u00a3"};
 function fmt(gmd,cur){
@@ -899,7 +1427,7 @@ const IWp    =()=>h('svg',{width:14,height:14,viewBox:"0 0 24 24",fill:"currentC
 function Header({setCartOpen}){
   const{count}=useCart();
   const[mo,setMo]=useState(false);
-  const links=[["home","Home"],["materials","Prices"],["how-it-works","How It Works"],["quote","Get a Quote"]];
+  const links=[["home","Home"],["materials","Prices"],["tools","Tools"],["guide","Building Guide"],["quote","Get a Quote"]];
 
   // Close menu on outside click
   useEffect(()=>{
@@ -952,9 +1480,9 @@ function Header({setCartOpen}){
 function Hero(){
   const prev=[
     ["Portland Cement 50kg","D\u202f525","bag"],
-    ["Hollow Block 9\"","D\u202f42","piece"],
-    ["Rebar Y12 \u00d7 6m","D\u202f680","bar"],
-    ["Sharp Sand","D\u202f1,400","ton"],
+    ["Long Span Sheet 0.55mm","D\u202f920","sheet"],
+    ["uPVC Pipe 1\" — 3m","D\u202f260","length"],
+    ["Steel Security Door","D\u202f14,500","unit"],
   ];
   return h('section',{id:"home",className:"hero"},
     h('div',{className:"hero-deco","aria-hidden":"true"}),
@@ -962,21 +1490,21 @@ function Hero(){
       h('div',null,
         h('div',{className:"hero-eyebrow"},
           h('span',{className:"hero-dot","aria-hidden":"true"}),
-          "Prices verified weekly from The Gambia"
+          "Prices updated every Monday from The Gambia"
         ),
         h('h1',null,
           "Build back home.",h('br'),
-          h('em',null,"Without the scams.")
+          h('em',null,"Without the uncertainty.")
         ),
         h('p',{className:"hero-sub"},
-          "Briksafe gives the Gambian diaspora transparent, current building material prices and a trusted local agent who sources, verifies, and delivers — so your money is never at risk."
+          "Briksafe gives the Gambian diaspora transparent, current building material prices and a trusted local agent who sources, verifies, and coordinates delivery — giving you real visibility over how your money is spent."
         ),
         h('div',{className:"hero-ctas"},
           h('button',{className:"btn-primary",onClick:()=>go("materials")},"Browse Prices\u00a0",h(IArrow)),
           h('button',{className:"btn-outline",onClick:()=>go("how-it-works")},"How It Works")
         ),
         h('div',{className:"hero-metrics"},
-          ...[["22","Materials tracked"],["Weekly","Price updates"],["Zero","Hidden fees"]].map(([v,l])=>
+          ...[["56+","Materials tracked"],["Weekly","Price updates"],["Zero","Hidden fees"]].map(([v,l])=>
             h('div',{key:l},
               h('div',{className:"hm-val"},v),
               h('div',{className:"hm-lbl"},l)
@@ -988,7 +1516,7 @@ function Hero(){
         h('div',{className:"hero-panel"},
           h('div',{className:"hp-hdr"},
             h('span',{className:"hp-htitle"},"Current Market Prices"),
-            h('span',{className:"hp-live"},h('span',{className:"hp-live-dot"}),"Live")
+            h('span',{className:"hp-live"},h('span',{className:"hp-live-dot"}),"Updated weekly")
           ),
           ...prev.map(([n,p,u])=>h('div',{key:n,className:"hp-row"},
             h('span',{className:"hp-name"},n),
@@ -996,8 +1524,8 @@ function Hero(){
           )),
           h('div',{className:"hp-footer"},
             h('div',{className:"hp-ti"},h('span',{className:"hp-tick"},h(ICheck)),"Market-rate prices, no markups"),
-            h('div',{className:"hp-ti"},h('span',{className:"hp-tick"},h(ICheck)),"Vetted local suppliers only"),
-            h('div',{className:"hp-ti"},h('span',{className:"hp-tick"},h(ICheck)),"Fixed service fee, stated upfront")
+            h('div',{className:"hp-ti"},h('span',{className:"hp-tick"},h(ICheck)),"Trusted suppliers selected on the ground"),
+            h('div',{className:"hp-ti"},h('span',{className:"hp-tick"},h(ICheck)),"Service fee agreed upfront, before you commit")
           )
         )
       )
@@ -1010,13 +1538,22 @@ function Materials({currency,setCurrency}){
   const{add,items}=useCart();
   const[q,setQ]=useState("");
   const[cat,setCat]=useState("All");
+  const[expanded,setExpanded]=useState(false);
   const[toast,setToast]=useState({show:false,msg:""});
   const inCart=useCallback(id=>items.some(i=>i.id===id),[items]);
+
+  // 4 representative samples — one from each key category
+  const SAMPLES=["sm01","rf01","pl06","dw03"];
 
   const filtered=useMemo(()=>MATS.filter(m=>{
     const lq=q.toLowerCase().trim();
     return(!lq||m.name.toLowerCase().includes(lq)||m.cat.toLowerCase().includes(lq))&&(cat==="All"||m.cat===cat);
   }),[q,cat]);
+
+  // Show samples only when no search/filter active and not expanded
+  const isFiltering=q.trim()!=""||cat!=="All";
+  const displayed=isFiltering||expanded ? filtered : MATS.filter(m=>SAMPLES.includes(m.id));
+  const showToggle=!isFiltering;
 
   function doAdd(m){
     if(inCart(m.id))return;
@@ -1025,25 +1562,67 @@ function Materials({currency,setCurrency}){
     setTimeout(()=>setToast({show:false,msg:""}),2200);
   }
 
+  const MatRow=({m})=>h('tr',{key:m.id},
+    h('td',null,h('div',{className:"td-name"},m.name),m.note&&h('div',{className:"td-note"},m.note)),
+    h('td',null,h('span',{style:{fontSize:"var(--t-xs)",color:"var(--ink-400)",fontWeight:500}},m.cat)),
+    h('td',null,h('span',{style:{fontSize:"var(--t-sm)",color:"var(--ink-500)"}},m.unit)),
+    h('td',null,h('span',{className:"td-price"},fmt(m.gmd,currency))),
+    h('td',null,
+      h('div',{className:"vbadge"},h(ICheck),"\u00a0Market price",h(DeltaBadge,{delta:m.delta})),
+      h('div',{className:"upd"},"Updated "+m.upd)
+    ),
+    h('td',null,
+      h('button',{
+        className:"add-btn"+(inCart(m.id)?" in":""),
+        onClick:()=>doAdd(m),
+        "aria-label":inCart(m.id)?"In quote":"Add "+m.name+" to quote",
+      },inCart(m.id)?"\u2713\u00a0In quote":"Add to quote")
+    )
+  );
+
+  const MatCard=({m})=>h('div',{key:m.id,className:"mcard"},
+    h('div',{className:"mc-top"},
+      h('div',null,
+        h('div',{className:"mc-name"},m.name),
+        h('div',{className:"mc-cat"},m.cat+"\u00a0\u00b7\u00a0"+m.unit)
+      ),
+      h('div',null,
+        h('div',{className:"mc-price"},fmt(m.gmd,currency)),
+        h('div',{className:"mc-unit"},"per "+m.unit)
+      )
+    ),
+    h('div',{className:"mc-foot"},
+      h('div',null,
+        h('span',{className:"vbadge",style:{fontSize:"var(--t-xs)"}},h(ICheck),"\u00a0Market price"),
+        h(DeltaBadge,{delta:m.delta})
+      ),
+      h('button',{
+        className:"mc-add"+(inCart(m.id)?" in":""),
+        onClick:()=>doAdd(m),
+        "aria-label":inCart(m.id)?"In quote":"Add "+m.name,
+        style:{maxWidth:"130px"},
+      },inCart(m.id)?"\u2713\u00a0In quote":"Add to quote")
+    )
+  );
+
+  const IChevron=()=>Ico([['polyline',{points:"6 9 12 15 18 9"}]],{width:16,height:16});
+
   return h('section',{id:"materials",className:"sec mat-sec"},
     h('div',{className:"wrap"},
-
-      // Header
-      h('div',{style:{marginBottom:"var(--sp-8)"}},
+      h(SeasonalBanner),
+      h('div',{style:{marginBottom:"var(--sp-6)"}},
         h('div',{className:"sec-eyebrow"},"Price Directory"),
         h('h2',{className:"sec-title"},"Transparent material prices."),
-        h('p',{className:"sec-sub"},"Market-rate prices from Gambian suppliers, updated every week. No markups. No hidden fees. What you see is what the market charges.")
+        h('p',{className:"sec-sub"},"Market-rate prices from Gambian suppliers, updated every Monday. No markups, no hidden fees.")
       ),
-
-      // Controls
       h('div',{className:"ctrl-bar"},
         h('div',{className:"ctrl-row"},
           h('div',{className:"srch-wrap"},
             h(ISearch),
             h('input',{
               className:"srch",type:"search",
-              placeholder:"Search by name or category\u2026",
-              value:q,onChange:e=>setQ(e.target.value),
+              placeholder:"Search all 74 materials\u2026",
+              value:q,onChange:e=>{setQ(e.target.value);if(!expanded)setExpanded(true);},
               "aria-label":"Search materials",
             })
           ),
@@ -1057,142 +1636,95 @@ function Materials({currency,setCurrency}){
         h('div',{className:"pills",role:"group","aria-label":"Filter by category"},
           ...CATS.map(c=>h('button',{
             key:c,className:"pill"+(cat===c?" on":""),
-            onClick:()=>setCat(c),"aria-pressed":cat===c,
+            onClick:()=>{setCat(c);if(!expanded)setExpanded(true);},
+            "aria-pressed":cat===c,
           },c))
         ),
-        h('div',{className:"results-count"},filtered.length+" material"+(filtered.length!==1?"s":"")+" shown")
+        isFiltering&&h('div',{className:"results-count"},filtered.length+" material"+(filtered.length!==1?"s":"")+" shown")
       ),
-
-      // Content
-      filtered.length===0
+      displayed.length===0
         ? h('div',{className:"nores"},"No materials match your search.")
         : [
-          // DESKTOP TABLE
-          h('div',{key:"tbl",className:"tbl-wrap"},
-            h('table',{className:"mtbl","aria-label":"Building materials price list"},
-              h('thead',null,
-                h('tr',null,
+            h('div',{key:"tbl",className:"tbl-wrap"},
+              h('table',{className:"mtbl","aria-label":"Building materials price list"},
+                h('thead',null,h('tr',null,
                   ...["Material","Category","Unit","Price ("+currency+")","Status",""].map((c,i)=>h('th',{key:i},c))
-                )
-              ),
-              h('tbody',null,
-                ...filtered.map(m=>h('tr',{key:m.id},
-                  h('td',null,
-                    h('div',{className:"td-name"},m.name),
-                    m.note&&h('div',{className:"td-note"},m.note)
-                  ),
-                  h('td',null,h('span',{style:{fontSize:"var(--t-xs)",color:"var(--ink-400)",fontWeight:500}},m.cat)),
-                  h('td',null,h('span',{style:{fontSize:"var(--t-sm)",color:"var(--ink-500)"}},m.unit)),
-                  h('td',null,h('span',{className:"td-price"},fmt(m.gmd,currency))),
-                  h('td',null,
-                    h('div',{className:"vbadge"},h(ICheck),"\u00a0Verified"),
-                    h('div',{className:"upd"},"Updated "+m.upd)
-                  ),
-                  h('td',null,
-                    h('button',{
-                      className:"add-btn"+(inCart(m.id)?" in":""),
-                      onClick:()=>doAdd(m),
-                      "aria-label":inCart(m.id)?"In quote":"Add "+m.name+" to quote",
-                    },inCart(m.id)?"\u2713\u00a0In quote":"Add to quote")
-                  )
-                ))
+                )),
+                h('tbody',null,...displayed.map(m=>h(MatRow,{key:m.id,m})))
               )
-            )
-          ),
-          // MOBILE CARDS
-          h('div',{key:"cards",className:"mcards"},
-            ...filtered.map(m=>h('div',{key:m.id,className:"mcard"},
-              h('div',{className:"mc-top"},
-                h('div',null,
-                  h('div',{className:"mc-name"},m.name),
-                  h('div',{className:"mc-cat"},m.cat+"\u00a0\u00b7\u00a0"+m.unit)
-                ),
-                h('div',null,
-                  h('div',{className:"mc-price"},fmt(m.gmd,currency)),
-                  h('div',{className:"mc-unit"},"per "+m.unit)
-                )
-              ),
-              h('div',{className:"mc-foot"},
-                h('span',{className:"vbadge",style:{fontSize:"var(--t-xs)"}},h(ICheck),"\u00a0Verified\u00a0\u00b7\u00a0"+m.upd),
-                h('button',{
-                  className:"mc-add"+(inCart(m.id)?" in":""),
-                  onClick:()=>doAdd(m),
-                  "aria-label":inCart(m.id)?"In quote":"Add "+m.name,
-                  style:{maxWidth:"130px"},
-                },inCart(m.id)?"\u2713\u00a0In quote":"Add to quote")
-              )
-            ))
-          )
-        ]
+            ),
+            h('div',{key:"cards",className:"mcards"},
+              ...displayed.map(m=>h(MatCard,{key:m.id,m}))
+            ),
+          ],
+      showToggle&&h('button',{
+        className:"expand-toggle",
+        onClick:()=>setExpanded(v=>!v),
+        "aria-expanded":expanded,
+      },
+        expanded
+          ? [h('span',null,"Show fewer materials"),h('span',{className:"expand-chevron open",key:"c"},h(IChevron))]
+          : [h('span',null,"View all 74 materials across 7 categories"),h('span',{className:"expand-chevron",key:"c"},h(IChevron))]
+      )
     ),
     h('div',{className:"toast"+(toast.show?" show":""),role:"status","aria-live":"polite"},"\u2713\u00a0"+toast.msg)
   );
 }
 
-/* ── HOW IT WORKS ──────────────────────────────────────────────────────── */
-function HowItWorks(){
+/* ── HOW IT WORKS + TRUST (merged compact) ─────────────────────────── */
+function TrustHow(){
+  const IWpSmall=()=>h('svg',{width:14,height:14,viewBox:"0 0 24 24",fill:"currentColor",style:{flexShrink:0}},h('path',{d:"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"}));
   const steps=[
-    {n:1,t:"Check current prices",     p:"Browse our verified, up-to-date price directory for cement, blocks, steel, roofing, and more — direct from the Gambian market, no inflation."},
-    {n:2,t:"Build your estimate",      p:"Add materials to your quote and adjust quantities. View costs in GMD, USD, or GBP — whichever matches how you earn."},
-    {n:3,t:"Submit your request",      p:"Send your quote with your delivery site and timeline. Your details stay private and are used only to reach you directly."},
-    {n:4,t:"We deliver in The Gambia", p:"Briksafe sources from vetted suppliers, verifies material quality, and coordinates delivery to your building site. You receive confirmation at every step."},
+    {n:1,t:"Check current prices",p:"Browse verified market-rate prices, updated every Monday. No markups, no inflation."},
+    {n:2,t:"Build your estimate",p:"Add materials to your quote. Switch between GMD, USD, or GBP instantly."},
+    {n:3,t:"Submit your request",p:"Send your quote with delivery site and timeline. Reaches Briksafe directly."},
+    {n:4,t:"We deliver in The Gambia",p:"Briksafe sources, verifies, and delivers. You receive photo proof at every step."},
   ];
-  return h('section',{id:"how-it-works",className:"sec how-sec"},
+  const trust=[
+    {icon:h(IEye),   t:"Transparent pricing",        p:"Verified market rates, updated weekly. No hidden markups."},
+    {icon:h(IShield),t:"Trusted local suppliers",     p:"We work with suppliers we have personally selected in The Gambia. Materials are checked before they leave the yard."},
+    {icon:h(IStar),  t:"Service fee agreed upfront",  p:"Our service fee is confirmed with you before anything is purchased. No surprises, no hidden costs."},
+    {icon:h(IWpSmall),t:"WhatsApp response within 2–3 business days", p:h('span',null,"Real person, no bots. ",h('a',{href:"https://wa.me/2203569784",target:"_blank",rel:"noopener noreferrer",className:"wa-inline"},"+220 356 9784"))},
+    {icon:h(ILock),  t:"Your data stays private",     p:"Used only to prepare your quote. Never shared."},
+  ];
+  return h('section',{id:"how-it-works",className:"sec trust-how-sec"},
     h('div',{className:"wrap"},
-      h('div',{className:"sec-eyebrow"},"Process"),
-      h('h2',{className:"sec-title"},"How Briksafe works."),
-      h('p',{className:"sec-sub"},"Four straightforward steps from price check to site delivery — with Briksafe handling the complexity on the ground."),
-      h('div',{className:"steps"},
-        ...steps.map(s=>h('div',{key:s.n,className:"step-card step"},
-          h('div',{className:"step-num"},
-            h('div',{className:"step-num-circle"},"0"+s.n),
-            "Step "+s.n
+      h('div',{className:"th-grid"},
+        h('div',null,
+          h('div',{className:"sec-eyebrow"},"How It Works"),
+          h('h2',{className:"sec-title",style:{fontSize:"clamp(1.3rem,2.5vw,var(--t-2xl))"}},
+            "From price check to site delivery."
           ),
-          h('h3',null,s.t),
-          h('p',null,s.p)
-        ))
-      )
-    )
-  );
-}
-
-/* ── TRUST ─────────────────────────────────────────────────────────────── */
-function WhyTrust(){
-  const rows=[
-    {icon:h(IEye),   t:"Transparent pricing",          p:"Market-rate prices updated weekly. We show you exactly what materials cost in The Gambia — no inflated quotes, no padding."},
-    {icon:h(IShield),t:"Vetted local suppliers",        p:"We source only from suppliers verified on the ground. Materials are inspected before they leave the yard."},
-    {icon:h(IStar),  t:"Fixed fee, stated upfront",     p:"Our service fee is confirmed before you commit — never buried as a hidden markup in the material price."},
-    {icon:h(IWp),    t:"WhatsApp follow-up",            p:h('span',null,"We reach you directly on WhatsApp within 48 hours. No automated emails, no chatbots \u2014 a real person handling your order. Message us now: ",h('a',{href:"https://wa.me/2203569784",target:"_blank",rel:"noopener noreferrer",className:"wa-inline"},h('svg',{width:13,height:13,viewBox:"0 0 24 24",fill:"currentColor"},h('path',{d:"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"})),"+220 356 9784"))},
-    {icon:h(ILock),  t:"Your details stay private",     p:"Your information is used only to prepare and fulfil your quote. We never sell or share your data."},
-  ];
-  return h('section',{className:"sec trust-sec"},
-    h('div',{className:"wrap"},
-      h('div',{className:"sec-eyebrow"},"Why Briksafe"),
-      h('h2',{className:"sec-title"},"A service built on trust."),
-      h('p',{className:"sec-sub"},"Sending money home for a build is one of the most consequential financial decisions a diaspora family makes. Every part of Briksafe is designed to protect that trust."),
-      h('div',{className:"trust-layout"},
-        h('div',{className:"trust-list"},
-          ...rows.map(r=>h('div',{key:r.t,className:"trust-row"},
-            h('div',{className:"trust-icon"},r.icon),
-            h('div',null,h('h4',null,r.t),h('p',null,r.p))
-          ))
+          h('p',{className:"sec-sub",style:{marginBottom:"var(--sp-6)"}},
+            "Four steps. Briksafe handles everything on the ground."
+          ),
+          h('div',{className:"how-steps-compact"},
+            ...steps.map(s=>h('div',{key:s.n,className:"how-step-c"},
+              h('div',{className:"how-step-c-num"},s.n),
+              h('div',null,h('h3',null,s.t),h('p',null,s.p))
+            ))
+          )
         ),
-        h('div',{className:"trust-right"},
-          h('div',{className:"testimonial"},
-            h('p',{className:"tq"},"\u201cI used to wire money home and just hope it was spent right. With Briksafe, I received photos of every bag of cement before it left the supplier\u2019s yard. That accountability changes everything when you\u2019re building from abroad.\u201d"),
-            h('div',{className:"tauthor"},
-              h('div',{className:"tavatar"},"AM"),
-              h('div',null,
-                h('div',{className:"tname"},"Aminata M."),
-                h('div',{className:"tloc"},"London, UK \u00b7 Building in Brikama")
-              )
-            )
+        h('div',null,
+          h('div',{className:"sec-eyebrow"},"Why Trust Us"),
+          h('h2',{className:"sec-title",style:{fontSize:"clamp(1.3rem,2.5vw,var(--t-2xl))"}},
+            "Built for peace of mind."
           ),
-          h('div',{className:"trust-stats"},
-            ...[["100%","Verified suppliers"],["0","Hidden fees"],["48h","Response time"]].map(([v,l])=>
-              h('div',{key:l,className:"ts"},
-                h('div',{className:"ts-val"},v),
-                h('div',{className:"ts-lbl"},l)
+          h('div',{className:"trust-points",style:{marginTop:"var(--sp-5)"}},
+            ...trust.map(r=>h('div',{key:r.t,className:"trust-point"},
+              h('span',{className:"trust-point-icon"},r.icon),
+              h('div',null,h('h4',null,r.t),h('p',null,r.p))
+            ))
+          ),
+          h('div',{className:"testimonial-compact"},
+            h('p',{className:"tq-compact"},
+              "\u201cI received photos of every bag of cement before it left the yard. That accountability changes everything when you\u2019re building from abroad.\u201d"
+            ),
+            h('div',{className:"tauthor"},
+              h('div',{className:"tavatar",style:{width:"34px",height:"34px",fontSize:"var(--t-xs)"}},"AM"),
+              h('div',null,
+                h('div',{className:"tname",style:{fontSize:"var(--t-xs)"}},"Aminata M."),
+                h('div',{className:"tloc"},"London, UK \u00b7 Building in Brikama")
               )
             )
           )
@@ -1258,6 +1790,7 @@ function CartSidebar({open,onClose,currency}){
           h('span',{className:"cs-sub-val"},fmt(total,currency))
         ),
         h('p',{className:"cs-note"},"Materials estimate in "+currency+". Briksafe service fee confirmed separately — before any payment is requested."),
+        h(ShareAndPrint,{items,currency}),
         h('div',{className:"cs-btns"},
           h('button',{className:"bfin",onClick:goForm},"Finalize Quote \u2192"),
           h('button',{className:"bclr",onClick:doClear},conf?"Tap again to confirm":"Clear quote")
@@ -1321,10 +1854,10 @@ function QuoteForm({currency}){
           if(Object.keys(fieldErrs).length)setErrs(fieldErrs);
           else setSErr(data.errors.map(e=>e.message).join(" "));
         } else {
-          setSErr("Submission failed. Please try again or message us on WhatsApp.");
+          setSErr("Submission failed. Please try again or message us directly on WhatsApp: +220 356 9784");
         }
       }
-    }catch{setSErr("Network error. Please check your connection and try again.");}
+    }catch{setSErr("Network error. Please check your connection and try again. You can also reach us directly on WhatsApp: +220 356 9784");}
     setBusy(false);
   }
   function bind(k,ta=false){
@@ -1334,15 +1867,15 @@ function QuoteForm({currency}){
       className:(ta?"fta":"fi")+(errs[k]?" err":""),
     };
   }
-  const locs=["United States","United Kingdom","France","Germany","Spain","Sweden","Netherlands","Italy","Canada","Other"];
+  const locs=["United States","United Kingdom","France","Germany","Spain","Sweden","Netherlands","Italy","Canada","Australia","Other (please specify in notes)"];
   const times=["Within 2 weeks","1 month","2\u20133 months","3\u20136 months","6+ months"];
 
   return h('section',{id:"quote",className:"sec form-sec"},
     h('div',{className:"wrap"},
       h('div',{style:{marginBottom:"var(--sp-4)"}},
         h('div',{className:"sec-eyebrow"},"Get a Quote"),
-        h('h2',{className:"sec-title"},"Request a verified quote."),
-        h('p',{className:"sec-sub"},"Tell us what you need and where. Briksafe will verify availability, confirm final pricing, and reach you via WhatsApp within 48 hours.")
+        h('h2',{className:"sec-title"},"Request your quote."),
+        h('p',{className:"sec-sub"},"Tell us what you need and where. Briksafe will verify availability, confirm final pricing, and reach you on WhatsApp within 2–3 business days (Monday to Friday).")
       ),
       h('div',{className:"form-layout"},
         /* ASIDE */
@@ -1373,21 +1906,18 @@ function QuoteForm({currency}){
           h('p',{className:"aside-note"},
             "\u26a0\ufe0f\u00a0Prices are market estimates. Final pricing is confirmed by Briksafe before any payment is requested."
           ),
-          h('div',{className:"direct-contact"},
-            h('div',{className:"dc-label"},"Prefer to message directly?"),
-            h('p',{className:"dc-body"},"Skip the form and reach us straight on WhatsApp. We\u2019re available to answer questions about pricing, availability, or how Briksafe works."),
+          h(NextStrip),
+          h('div',{className:"direct-contact",style:{marginTop:"var(--sp-5)"}},
+            h('div',{className:"dc-label"},"Or message us directly"),
+            h('p',{className:"dc-body"},"Skip the form and reach us straight on WhatsApp."),
             h('a',{
               className:"wa-btn",
               href:"https://wa.me/2203569784",
-              target:"_blank",
-              rel:"noopener noreferrer",
+              target:"_blank",rel:"noopener noreferrer",
               "aria-label":"Message Briksafe on WhatsApp",
             },
-              h('svg',{width:16,height:16,viewBox:"0 0 24 24",fill:"currentColor"},
-                h('path',{d:"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"})
-              ),
-              "Message us on WhatsApp",
-              h('span',{style:{fontSize:"var(--t-xs)",opacity:.75,fontWeight:500}},"+220 356 9784")
+              h(IWp),
+              "+220 356 9784"
             )
           )
         ),
@@ -1398,7 +1928,7 @@ function QuoteForm({currency}){
               h('div',{className:"success-ico"},"✅"),
               h('div',{className:"success-h"},"Quote submitted."),
               h('p',{className:"success-p"},
-                "Thank you. Briksafe will review your request and contact you via WhatsApp within 48 hours. Please do not send any payment until pricing and availability have been confirmed with you directly."
+                "Thank you. Briksafe will review your request and contact you on WhatsApp within 2–3 business days (Monday to Friday). Please do not send any payment until pricing and availability have been confirmed with you directly."
               )
             )
           : h('form',{onSubmit,noValidate:true},
@@ -1475,9 +2005,9 @@ function Footer(){
         h('div',null,
           h('div',{className:"fcol-label"},"Navigate"),
           h('div',{className:"flinks"},
-            ...["home","materials","how-it-works","quote"].map((id,i)=>
+            ...["home","materials","tools","guide","quote"].map((id,i)=>
               h('button',{key:id,className:"flink",onClick:()=>go(id)},
-                ["Home","Prices","How It Works","Get a Quote"][i]
+                ["Home","Prices","Tools","Building Guide","Get a Quote"][i]
               )
             )
           )
@@ -1485,9 +2015,15 @@ function Footer(){
         h('div',null,
           h('div',{className:"fcol-label"},"Our Commitment"),
           h('div',{className:"flinks"},
-            ...["Verified prices","No hidden fees","WhatsApp support","Your data is private"].map(t=>
+            ...["Transparent pricing","No hidden fees","WhatsApp support"].map(t=>
               h('span',{key:t,className:"flink"},t)
-            )
+            ),
+            h('a',{
+              href:"#privacy",
+              className:"flink",
+              onClick:e=>{e.preventDefault();go("privacy");},
+              style:{color:"var(--forest)",fontWeight:600},
+            },"Privacy Policy \u2192")
           )
         ),
         h('div',null,
@@ -1510,32 +2046,1398 @@ function Footer(){
               "+220 356 9784"
             ),
             h('span',{className:"flink",style:{color:"var(--ink-400)",fontSize:"var(--t-xs)"}},"Message us on WhatsApp"),
+            h('a',{
+              href:"mailto:hello@briksafe.com",
+              className:"flink",
+              style:{color:"var(--ink-600)",textDecoration:"none"},
+            },"hello@briksafe.com"),
           )
         )
       ),
       h('div',{className:"footer-bot"},
         h('span',{className:"footer-legal"},"\u00a9 "+new Date().getFullYear()+" Briksafe. All rights reserved."),
-        h('span',{className:"footer-legal"},"Prices are market estimates. All costs confirmed before any payment.")
+        h('span',{className:"footer-legal"},"Prices are indicative market estimates only. Final pricing confirmed by Briksafe before any payment is requested. Briksafe acts as a procurement agent, not a financial service.")
       )
     )
+  );
+}
+
+/* ── TOOLS HUB (tabbed: Estimator / Calculators / Remittance / Compare) ─ */
+function ToolsHub({currency}){
+  const TOOLS=[
+    {id:"estimator",  label:"🏗️ Cost Estimator"},
+    {id:"calculators",label:"📐 Calculators"},
+    {id:"remittance", label:"💸 Remittance"},
+    {id:"compare",    label:"⚖️ Compare"},
+  ];
+  const[active,setActive]=useState("estimator");
+
+  const panels={
+    estimator: h(EstimatorPanel,{currency}),
+    calculators: h(CalcPanel,{currency}),
+    remittance: h(RemitPanel),
+    compare: h(ComparePanel),
+  };
+
+  return h('section',{id:"tools",className:"sec tools-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"Planning Tools"),
+      h('h2',{className:"sec-title"},"Everything you need to plan your build."),
+      h('p',{className:"sec-sub"},"Cost estimates, quantity calculators, remittance comparison, and material guides \u2014 all in one place."),
+      h('div',{className:"tools-tabs",role:"tablist"},
+        ...TOOLS.map(t=>h('button',{
+          key:t.id,className:"tools-tab"+(active===t.id?" on":""),
+          onClick:()=>setActive(t.id),
+          role:"tab","aria-selected":active===t.id,
+        },t.label))
+      ),
+      h('div',{className:"tools-panel"},panels[active])
+    )
+  );
+}
+
+/* ── ESTIMATOR PANEL (inner) ─────────────────────────────────────────── */
+function EstimatorPanel({currency}){
+  const{add}=useCart();
+  const ESTIMATOR_NOTE=h('p',{style:{
+    fontSize:"var(--t-xs)",color:"var(--ink-500)",lineHeight:"1.6",
+    padding:"10px 14px",background:"var(--bg-warm)",
+    border:"var(--bdr)",borderRadius:"var(--r)",marginBottom:"var(--sp-4)",
+  }},
+    "\u26a0\ufe0f This is a rough planning guide only. Actual material costs vary significantly based on your design, site conditions, and current market prices. Actual variance can be \u00b130% or more. Always confirm quantities with Briksafe before ordering."
+  );
+  const[beds,setBeds]=useState("3");
+  const[storeys,setStoreys]=useState("1");
+  const[roof,setRoof]=useState("iron");
+  const[results,setResults]=useState(null);
+  function run(){setResults(calcEstimate(parseInt(beds),parseInt(storeys),roof));}
+  function addAll(){if(!results)return;results.forEach(r=>{const found=MATS.find(m=>m.name.toLowerCase().includes(r.name.toLowerCase().slice(0,10)));if(found)add({...found,qty:r.qty});});}
+  const total=results?results.reduce((s,r)=>s+r.qty*r.gmdUnit,0):0;
+  return h('div',null,
+    ESTIMATOR_NOTE,
+    h('div',{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:"var(--sp-4)",marginBottom:"var(--sp-5)"}},
+      h('div',{className:"est-field"},
+        h('label',{className:"est-label",htmlFor:"eb"},"Bedrooms"),
+        h('select',{id:"eb",className:"est-select",value:beds,onChange:e=>setBeds(e.target.value)},
+          ...["1","2","3","4"].map(v=>h('option',{key:v,value:v},v+" bed"+(v!=="1"?"s":"")))
+        )
+      ),
+      h('div',{className:"est-field"},
+        h('label',{className:"est-label",htmlFor:"es"},"Storeys"),
+        h('select',{id:"es",className:"est-select",value:storeys,onChange:e=>setStoreys(e.target.value)},
+          h('option',{value:"1"},"Single storey"),
+          h('option',{value:"2"},"Double storey")
+        )
+      ),
+      h('div',{className:"est-field"},
+        h('label',{className:"est-label",htmlFor:"er"},"Roof Type"),
+        h('select',{id:"er",className:"est-select",value:roof,onChange:e=>setRoof(e.target.value)},
+          h('option',{value:"iron"},"Iron sheet (3m)"),
+          h('option',{value:"longspan"},"Long span (6m)")
+        )
+      ),
+      h('div',{className:"est-field",style:{display:"flex",alignItems:"flex-end"}},
+        h('button',{className:"est-btn",onClick:run,style:{marginTop:0}},"Calculate \u2192")
+      )
+    ),
+    !results
+      ? h('div',{className:"est-placeholder",style:{padding:"var(--sp-8)"}},
+          h('div',{className:"est-placeholder-icon"},"🏗️"),
+          h('p',{style:{fontWeight:700,color:"var(--ink-700)",marginBottom:"6px"}},"Your estimate will appear here"),
+          h('p',{style:{fontSize:"var(--t-sm)"}},"Select your build details above")
+        )
+      : [
+          h('div',{key:"tbl",className:"est-summary"},
+            h('div',{className:"est-sum-hdr"},
+              h('span',{className:"est-sum-title"},beds+" bed · "+storeys+" storey estimate"),
+              h('span',{className:"est-sum-sub"},"Indicative quantities")
+            ),
+            ...results.map((r,i)=>h('div',{key:i,className:"est-sum-row"},
+              h('span',{className:"est-sum-name"},r.name),
+              h('span',{className:"est-sum-qty"},r.qty+" "+r.unit),
+              h('span',{className:"est-sum-price"},fmt(r.qty*r.gmdUnit,currency))
+            )),
+            h('div',{className:"est-total-row"},
+              h('span',{className:"est-total-lbl"},"Rough Materials Total"),
+              h('span',{className:"est-total-val"},fmt(total,currency))
+            )
+          ),
+          h('p',{key:"d",className:"est-disclaimer",style:{marginTop:"var(--sp-3)"}},
+            "\u26a0\ufe0f Structural + roofing materials only. Excludes labour, electrical, plumbing, finishes, doors, and windows. Actual costs may vary \u00b130%."
+          ),
+          h('button',{key:"a",className:"est-add-btn",onClick:addAll,style:{marginTop:"var(--sp-3)"}},"Add All to Quote Builder \u2192")
+        ]
+  );
+}
+
+/* ── CALC PANEL (inner) ───────────────────────────────────────────────── */
+function CalcPanel(){
+  const[active,setActive]=useState(CALCS[0].id);
+  const calc=CALCS.find(c=>c.id===active)||CALCS[0];
+  const initVals=Object.fromEntries(calc.fields.map(f=>[f.id,f.def]));
+  const[vals,setVals]=useState(initVals);
+  function switchCalc(id){setActive(id);const nc=CALCS.find(c=>c.id===id);if(nc)setVals(Object.fromEntries(nc.fields.map(f=>[f.id,f.def])));}
+  const results=useMemo(()=>{try{return calc.calc(vals);}catch{return [];};},[calc,vals]);
+  return h('div',null,
+    h('div',{style:{display:"flex",gap:"6px",flexWrap:"wrap",marginBottom:"var(--sp-4)"}},
+      ...CALCS.map(c=>h('button',{
+        key:c.id,className:"calc-tab"+(active===c.id?" on":""),
+        onClick:()=>switchCalc(c.id),
+        style:{borderRadius:"var(--r-sm)"},
+      },c.label))
+    ),
+    h('div',{style:{marginBottom:"var(--sp-3)"}},
+      h('div',{style:{fontWeight:700,color:"var(--ink-900)",marginBottom:"2px",fontSize:"var(--t-base)"}},calc.title),
+      h('div',{style:{fontSize:"var(--t-xs)",color:"var(--ink-500)"}},calc.sub)
+    ),
+    h('div',{className:"calc-inputs"},
+      ...calc.fields.map(f=>h('div',{key:f.id,className:"calc-field"},
+        h('label',{htmlFor:"ci-"+f.id},f.label),
+        f.type==="select"
+          ? h('select',{id:"ci-"+f.id,value:vals[f.id]||f.def,onChange:e=>setVals(p=>({...p,[f.id]:e.target.value}))},
+              ...(f.opts||[]).map(([v,l])=>h('option',{key:v,value:v},l))
+            )
+          : h('input',{id:"ci-"+f.id,type:"number",min:"0",step:"0.5",value:vals[f.id]||"",onChange:e=>setVals(p=>({...p,[f.id]:e.target.value}))})
+      ))
+    ),
+    results.length>0&&h('div',{className:"calc-results"},
+      ...results.map(r=>h('div',{key:r.l,className:"calc-result-row"},
+        h('span',{className:"calc-result-lbl"},r.l),
+        h('span',{className:"calc-result-val"+(r.hero?" hero":"")},r.v)
+      ))
+    ),
+    h('p',{className:"calc-formula"},calc.formula)
+  );
+}
+
+/* ── REMIT PANEL (inner) ──────────────────────────────────────────────── */
+function RemitPanel(){
+  const[amount,setAmount]=useState("1000");
+  const[fromCur,setFromCur]=useState("GBP");
+  const sym=CUR_SYMS[fromCur];
+  const providers=PROVIDERS[fromCur]||[];
+  const num=parseFloat(amount)||0;
+  return h('div',null,
+    h('div',{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:"var(--sp-4)",marginBottom:"var(--sp-5)"}},
+      h('div',{className:"remit-field"},
+        h('label',{className:"remit-label",htmlFor:"rc"},"Sending from"),
+        h('select',{id:"rc",className:"remit-select",value:fromCur,onChange:e=>setFromCur(e.target.value)},
+          h('option',{value:"GBP"},"\u00a3 GBP — British Pounds"),
+          h('option',{value:"USD"},"$ USD — US Dollars"),
+          h('option',{value:"EUR"},"\u20ac EUR — Euros"),
+        )
+      ),
+      h('div',{className:"remit-field"},
+        h('label',{className:"remit-label",htmlFor:"ra"},"Amount to send"),
+        h('div',{className:"remit-input-wrap"},
+          h('span',{className:"remit-prefix"},sym),
+          h('input',{id:"ra",className:"remit-input",type:"number",min:"0",step:"50",value:amount,onChange:e=>setAmount(e.target.value)})
+        )
+      )
+    ),
+    h('div',{style:{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:"var(--sp-2)"}},
+      ...providers.map(p=>{
+        const arrives=Math.floor((num-p.fee)*p.rate);
+        return h('div',{key:p.name,className:"remit-prov"},
+          h('div',null,
+            h('div',{className:"remit-prov-name"},p.name),
+            h('div',{className:"remit-prov-detail"},p.feeNote+" · "+p.rate+" GMD/"+fromCur)
+          ),
+          h('div',{className:"remit-prov-rate"},num>0?"D\u202f"+arrives.toLocaleString('en-GB'):"—")
+        );
+      })
+    ),
+    h('p',{className:"remit-note"},"\u26a0\ufe0f Indicative rates only — last updated May 2026. Exchange rates change daily. Always confirm the exact rate and fees on the provider's app before sending. Wave typically offers the best rates with zero fees for the Gambia corridor.")
+  );
+}
+
+/* ── COMPARE PANEL (inner) ────────────────────────────────────────────── */
+function ComparePanel(){
+  const[active,setActive]=useState(COMPARISONS[0].id);
+  const comp=COMPARISONS.find(c=>c.id===active)||COMPARISONS[0];
+  return h('div',null,
+    h('div',{style:{display:"flex",gap:"6px",flexWrap:"wrap",marginBottom:"var(--sp-5)"}},
+      ...COMPARISONS.map(c=>h('button',{
+        key:c.id,className:"compare-tab"+(active===c.id?" on":""),
+        onClick:()=>setActive(c.id),
+      },c.label))
+    ),
+    h('div',{className:"compare-grid"},
+      [comp.a,comp.b].map(col=>h('div',{key:col.name,className:"compare-col"},
+        h('div',{className:"compare-hdr"+(col.best?" best":"")},
+          h('div',{className:"compare-hdr-name"},col.name),
+          col.best&&h('div',{className:"compare-best-tag"},h(ICheck),"\u00a0Recommended")
+        ),
+        h('div',{className:"compare-rows"},
+          ...col.rows.map(r=>h('div',{key:r.l,className:"compare-row"},
+            h('div',{className:"compare-row-lbl"},r.l),
+            h('div',{className:"compare-row-val"},r.v)
+          ))
+        )
+      ))
+    ),
+    h('p',{className:"compare-footnote"},comp.note)
+  );
+}
+
+/* ── WHAT HAPPENS NEXT (compact strip inside form section) ───────────── */
+function NextStrip(){
+  const steps=[
+    {state:"done",  time:"Immediate",  title:"Quote received"},
+    {state:"active",time:"1–2 business days", title:"Briksafe verifies"},
+    {state:"wait",  time:"2–3 business days", title:"WhatsApp contact"},
+    {state:"wait",  time:"On agreement",title:"Payment agreed"},
+    {state:"wait",  time:"After payment",title:"Materials sourced"},
+    {state:"wait",  time:"As scheduled",title:"Site delivery"},
+  ];
+  return h('div',{style:{marginTop:"var(--sp-8)"}},
+    h('div',{className:"sec-eyebrow"},"After you submit"),
+    h('h3',{style:{fontFamily:"var(--ff)",fontWeight:700,fontSize:"var(--t-base)",color:"var(--ink-900)",letterSpacing:"-0.01em",marginBottom:"var(--sp-4)"}},"What happens next"),
+    h('div',{className:"timeline-strip"},
+      ...steps.map((s,i)=>h('div',{key:i,className:"ts-item"},
+        h('div',{className:"ts-item-num s-"+s.state},
+          s.state==="done"?"\u2713":s.state==="active"?"NOW":(i+1)
+        ),
+        h('div',{className:"ts-item-title"},s.title),
+        h('div',{className:"ts-item-time"},s.time)
+      ))
+    )
+  );
+}
+
+/* ── FAQ (compact, 3 visible + show more) ────────────────────────────── */
+function DeltaBadge({delta}){
+  if(delta===undefined||delta===null)return null;
+  if(delta===0)return h('span',{className:"pdelta nc",title:"No change since last update"},"\u2192 0%");
+  if(delta>0) return h('span',{className:"pdelta up",title:"Price increased since last update"},"\u2191 +"+delta+"%");
+  return       h('span',{className:"pdelta dn",title:"Price decreased since last update"},"\u2193 "+delta+"%");
+}
+
+/* ── BUILD COST ESTIMATOR ───────────────────────────────────────────────── */
+// Construction norms for The Gambia (conservative estimates)
+const EST_CONFIG={
+  // blocks per m² of wall (single skin 9")
+  blocksPerSqmWall: 12,
+  // cement bags per m³ of concrete (1:2:4 mix)
+  cementPerM3: 7,
+  // bags of cement per m² of slab (100mm thick)
+  cementPerSqmSlab: 0.7,
+  // rebar Y12 bars per m² of slab
+  rebarPerSqmSlab: 1.2,
+  // roof sheets (3m) per m² of roof
+  sheetsPerSqmRoof: 0.38,
+  // wall height m (floor to ceiling + ring beam allowance)
+  wallHeight: 3.2,
+  // perimeter multiplier per bedroom (rough guide)
+  perimeterPerBed: { 1:24, 2:32, 3:40, 4:50 },
+  // floor area per bedroom m²
+  floorPerBed: { 1:45, 2:70, 3:100, 4:135 },
+};
+
+function calcEstimate(beds, storeys, roofType){
+  const c=EST_CONFIG;
+  const perimeter=c.perimeterPerBed[beds]||40;
+  const floorArea=(c.floorPerBed[beds]||100)*storeys;
+  const wallArea=perimeter*c.wallHeight*storeys;
+  const roofArea=(c.floorPerBed[beds]||100)*1.15; // slight overhang
+
+  const blocks=Math.ceil(wallArea*c.blocksPerSqmWall*1.08); // 8% waste
+  const cementFoundation=Math.ceil((perimeter*0.6*0.4)*c.cementPerM3); // strip foundation
+  const cementSlab=Math.ceil(floorArea*c.cementPerSqmSlab);
+  const cementWall=Math.ceil(blocks/80); // ~1 bag per 80 blocks for mortar
+  const cementTotal=cementFoundation+cementSlab+cementWall;
+  const rebarBars=Math.ceil(floorArea*c.rebarPerSqmSlab);
+  const sand=Math.ceil((floorArea*0.1+wallArea*0.03)*1.6); // tons
+  const gravel=Math.ceil(floorArea*0.1*1.8);
+
+  const items=[];
+  items.push({name:'Hollow Concrete Block 9"',qty:blocks,unit:"pieces",gmdUnit:42,cat:"Structural Materials"});
+  items.push({name:"Portland Cement 50kg",qty:cementTotal,unit:"bags",gmdUnit:525,cat:"Structural Materials"});
+  items.push({name:"Rebar Y12 \u00d7 6m",qty:rebarBars,unit:"bars",gmdUnit:680,cat:"Structural Materials"});
+  items.push({name:"Sharp Sand",qty:sand,unit:"tons",gmdUnit:1400,cat:"Structural Materials"});
+  items.push({name:"Gravel / Aggregate",qty:gravel,unit:"tons",gmdUnit:1650,cat:"Structural Materials"});
+  items.push({name:"Laterite Fill",qty:Math.ceil(floorArea*0.2),unit:"tons",gmdUnit:950,cat:"Structural Materials"});
+  items.push({name:"Binding Wire 1kg",qty:Math.ceil(rebarBars/20),unit:"rolls",gmdUnit:95,cat:"Structural Materials"});
+
+  if(roofType==="iron"){
+    items.push({name:"Long Span Sheet 0.55mm — 3m",qty:Math.ceil(roofArea*c.sheetsPerSqmRoof*1.1),unit:"sheets",gmdUnit:920,cat:"Roofing"});
+    items.push({name:"Ridge Cap 3m",qty:Math.ceil(perimeter/4/3),unit:"pieces",gmdUnit:480,cat:"Roofing"});
+    items.push({name:'Roofing Nails 3" (1kg)',qty:Math.ceil(roofArea*0.05),unit:"kg",gmdUnit:75,cat:"Roofing"});
+    items.push({name:"Roof Timber Batten 2\u00d72",qty:Math.ceil(roofArea*0.8),unit:"pieces",gmdUnit:160,cat:"Roofing"});
+  } else {
+    items.push({name:"Roofing Screws with Washer",qty:Math.ceil(roofArea*0.6),unit:"packs",gmdUnit:220,cat:"Roofing"});
+    items.push({name:"Long Span Sheet 0.55mm — 6m",qty:Math.ceil(roofArea*c.sheetsPerSqmRoof*0.6),unit:"sheets",gmdUnit:1750,cat:"Roofing"});
+  }
+
+  items.push({name:"Polythene DPC Membrane",qty:Math.ceil(floorArea/50)+1,unit:"rolls",gmdUnit:1100,cat:"Roofing"});
+  items.push({name:"Shuttering Plywood 18mm",qty:Math.ceil(floorArea/3.2),unit:"sheets",gmdUnit:1850,cat:"Structural Materials"});
+  items.push({name:"2\u00d74 Pine Timber 3m",qty:Math.ceil(floorArea*0.4),unit:"pieces",gmdUnit:285,cat:"Structural Materials"});
+
+  return items;
+}
+
+function Estimator({currency}){
+  const{add}=useCart();
+  const[beds,setBeds]=useState("3");
+  const[storeys,setStoreys]=useState("1");
+  const[roof,setRoof]=useState("iron");
+  const[results,setResults]=useState(null);
+
+  function run(){
+    setResults(calcEstimate(parseInt(beds),parseInt(storeys),roof));
+  }
+  function addAll(){
+    if(!results)return;
+    results.forEach(r=>{
+      // find matching mat in MATS or create synthetic
+      const found=MATS.find(m=>m.name.toLowerCase().includes(r.name.toLowerCase().slice(0,10)));
+      if(found)add({...found,qty:r.qty});
+    });
+  }
+  const total=results?results.reduce((s,r)=>s+r.qty*r.gmdUnit,0):0;
+
+  return h('section',{id:"estimator",className:"sec est-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"Build Cost Estimator"),
+      h('h2',{className:"sec-title"},"How much will your build cost?"),
+      h('p',{className:"sec-sub"},"Get an instant rough estimate of the materials you\u2019ll need. Based on standard Gambian construction norms \u2014 adjust quantities to suit your specific design."),
+      h('div',{className:"est-grid"},
+        h('div',{className:"est-form-card"},
+          h('div',{className:"est-form-title"},"Tell us about your build"),
+          h('div',{className:"est-field"},
+            h('label',{className:"est-label",htmlFor:"est-beds"},"Number of Bedrooms"),
+            h('select',{id:"est-beds",className:"est-select",value:beds,onChange:e=>setBeds(e.target.value)},
+              ...["1","2","3","4"].map(v=>h('option',{key:v,value:v},v+" bedroom"+(v!=="1"?"s":"")))
+            )
+          ),
+          h('div',{className:"est-field"},
+            h('label',{className:"est-label",htmlFor:"est-stor"},"Number of Storeys"),
+            h('select',{id:"est-stor",className:"est-select",value:storeys,onChange:e=>setStoreys(e.target.value)},
+              h('option',{value:"1"},"Single storey (ground floor)"),
+              h('option',{value:"2"},"Double storey (ground + 1st floor)")
+            )
+          ),
+          h('div',{className:"est-field"},
+            h('label',{className:"est-label",htmlFor:"est-roof"},"Roof Type"),
+            h('select',{id:"est-roof",className:"est-select",value:roof,onChange:e=>setRoof(e.target.value)},
+              h('option',{value:"iron"},"Corrugated iron sheet (3m)"),
+              h('option',{value:"longspan"},"Long span sheet (6m)")
+            )
+          ),
+          h('button',{className:"est-btn",onClick:run},"Calculate Material Estimate \u2192"),
+          h('p',{className:"est-note"},"\u26a0\ufe0f This is a rough guide only. Actual quantities depend on your architectural drawings, site conditions, and construction method. Always confirm with a qualified builder.")
+        ),
+        h('div',{className:"est-results"},
+          !results
+          ? h('div',{className:"est-placeholder"},
+              h('div',{className:"est-placeholder-icon"},"🏗️"),
+              h('p',{style:{fontWeight:700,color:"var(--ink-700)",marginBottom:"8px"}},"Your estimate will appear here"),
+              h('p',{style:{fontSize:"var(--t-sm)"}},"Fill in your build details and click Calculate")
+            )
+          : [
+              h('div',{key:"tbl",className:"est-summary"},
+                h('div',{className:"est-sum-hdr"},
+                  h('span',{className:"est-sum-title"},beds+" bed, "+storeys+" storey"),
+                  h('span',{className:"est-sum-sub"},"Estimated materials list")
+                ),
+                ...results.map((r,i)=>h('div',{key:i,className:"est-sum-row"},
+                  h('span',{className:"est-sum-name"},r.name),
+                  h('span',{className:"est-sum-qty"},r.qty+" "+r.unit),
+                  h('span',{className:"est-sum-price"},fmt(r.qty*r.gmdUnit,currency))
+                )),
+                h('div',{className:"est-total-row"},
+                  h('span',{className:"est-total-lbl"},"Rough Materials Total"),
+                  h('span',{className:"est-total-val"},fmt(total,currency))
+                )
+              ),
+              h('div',{key:"disc",className:"est-disclaimer"},
+                "\u26a0\ufe0f\u00a0 This estimate covers main structural and roofing materials only. It does not include labour, electrical, plumbing, finishes, doors, windows, or site preparation. Actual costs may vary by 20\u201340%. Use this as a planning guide only \u2014 Briksafe will confirm real pricing when you submit a quote request."
+              ),
+              h('button',{key:"add",className:"est-add-btn",onClick:addAll},"Add All Items to Quote Builder \u2192")
+            ]
+        )
+      )
+    )
+  );
+}
+
+/* ── SAVED PROJECTS ─────────────────────────────────────────────────────── */
+function SavedProjects({currency}){
+  const{items,clear}=useCart();
+  const[projects,setProjects]=useState(()=>{
+    try{return JSON.parse(localStorage.getItem('briksafe_projects')||'[]');}
+    catch{return [];}
+  });
+  const[newName,setNewName]=useState("");
+
+  function save(){
+    if(!newName.trim()||!items.length)return;
+    const proj={
+      id:Date.now().toString(),
+      name:newName.trim(),
+      items:[...items],
+      saved:new Date().toLocaleDateString('en-GB'),
+      currency,
+    };
+    const updated=[proj,...projects];
+    setProjects(updated);
+    localStorage.setItem('briksafe_projects',JSON.stringify(updated));
+    setNewName("");
+  }
+  function del(id){
+    const updated=projects.filter(p=>p.id!==id);
+    setProjects(updated);
+    localStorage.setItem('briksafe_projects',JSON.stringify(updated));
+  }
+  function load(proj){
+    // Load items into cart context — we need to use the add function
+    // We expose this via a custom event since we can't easily access CartCtx here
+    window.dispatchEvent(new CustomEvent('briksafe:loadproject',{detail:proj.items}));
+  }
+  const projTotal=(proj)=>proj.items.reduce((s,i)=>s+i.gmd*(i.qty||1),0);
+
+  return h('section',{id:"projects",className:"sec proj-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"My Projects"),
+      h('h2',{className:"sec-title"},"Saved quote lists."),
+      h('p',{className:"sec-sub"},"Save your current quote as a named project — plan by phase, compare options, or pick up where you left off. Saved locally in your browser."),
+      h('div',{className:"proj-grid",style:{marginTop:"var(--sp-8)"}},
+        h('div',{className:"proj-new"},
+          h('div',{className:"proj-new-label"},"Save current quote as a project"),
+          h('input',{
+            className:"proj-new-input",
+            type:"text",placeholder:'e.g. "Foundation Phase" or "Roofing"',
+            value:newName,onChange:e=>setNewName(e.target.value),
+            onKeyDown:e=>e.key==='Enter'&&save(),
+          }),
+          h('div',{style:{display:"flex",gap:"8px",alignItems:"center"}},
+            h('button',{
+              className:"proj-save-btn",
+              onClick:save,
+              disabled:!newName.trim()||!items.length,
+            },"Save Project"),
+            items.length===0&&h('span',{style:{fontSize:"var(--t-xs)",color:"var(--ink-400)"}},"Add items to your quote first")
+          ),
+          h('p',{style:{fontSize:"var(--t-xs)",color:"var(--ink-400)",marginTop:"6px",lineHeight:"1.5"}},
+            "\u26a0\ufe0f Projects are saved in this browser only. Clearing your browser data or switching devices will remove them."
+          )
+        ),
+        projects.length===0
+          ? h('div',{className:"proj-empty"},"No saved projects yet. Build a quote and save it here to plan your build phase by phase.")
+          : projects.map(proj=>h('div',{key:proj.id,className:"proj-card"},
+              h('div',{className:"proj-card-name"},proj.name),
+              h('div',{className:"proj-card-meta"},proj.items.length+" items \u00b7 saved "+proj.saved),
+              h('div',{className:"proj-card-total"},fmt(projTotal(proj),proj.currency)),
+              h('div',{className:"proj-card-actions"},
+                h('button',{className:"proj-btn proj-btn-load",onClick:()=>load(proj)},"Load into Quote"),
+                h('button',{className:"proj-btn proj-btn-del",onClick:()=>del(proj.id)},"Delete")
+              )
+            ))
+      )
+    )
+  );
+}
+
+/* ── FAQ / BUILDING GUIDE ───────────────────────────────────────────────── */
+const FAQ_DATA={
+  "Planning & Budgeting":[
+    {q:"How much does it cost to build a 3-bedroom house in The Gambia?",
+     a:[
+       "A basic 3-bedroom single-storey house in The Gambia typically costs between D 800,000 and D 1,500,000 for materials alone, depending on finishes and location. Labour usually adds another 30–40% on top of material costs.",
+       "Key cost drivers include: the number of storeys, roof type, quality of finishes (tiles, paint, doors), and whether you need a borehole or septic tank.",
+       "Use the Briksafe estimator above to get a rough material breakdown for your specific build. Always get at least two contractor quotes before committing.",
+     ]},
+    {q:"When is the best time of year to build in The Gambia?",
+     a:[
+       "The dry season (November to May) is by far the best time to build. Ground is firm, concrete cures properly, and materials can be transported easily.",
+       "The rainy season (June to October) brings significant challenges: muddy access roads, slower concrete curing, potential flooding on low-lying sites, and delays in material delivery.",
+       "If you are sending money from abroad, plan to have funds in place by October so work can begin as soon as the rains ease in November.",
+     ]},
+    {q:"How do I send money safely for a building project?",
+     a:[
+       "Use regulated remittance services: Wave, Remitly, Western Union, WorldRemit, and bank transfers are all tracked and reversible in dispute cases.",
+       "Never send cash informally or via untested WhatsApp contacts. Only pay for materials after Briksafe or your trusted agent confirms availability and price.",
+       "Release payments in phases tied to verified milestones: foundation complete, walls complete, roof complete, etc. Never pay 100% upfront for any single phase.",
+       "Keep receipts and photos for every transaction. Briksafe provides photo evidence of purchases as standard.",
+     ]},
+  ],
+  "Materials & Quantities":[
+    {q:"How many blocks do I need for a 3-bedroom house?",
+     a:[
+       "As a rough guide: a 3-bedroom single-storey house requires approximately 4,000–5,500 hollow concrete blocks (9\"), depending on the layout and number of internal walls.",
+       "The calculation is based on wall area × 12 blocks per m² for 9\" hollow blocks. A typical 3-bed has around 350–450m² of wall area including internal partitions.",
+       "Always add 8–10% extra for cutting waste, broken blocks, and variations. Briksafe's estimator calculates this automatically.",
+     ]},
+    {q:"How much cement will I need?",
+     a:[
+       "Cement usage breaks down across three main activities: foundation concrete, floor slab, and wall mortar.",
+       "For a 3-bedroom house: foundation typically needs 30–50 bags, slab needs 60–90 bags, and wall mortar needs roughly 1 bag per 80–100 blocks. Total: 120–200 bags is a common range.",
+       "Rapid Set cement is useful for critical structural pours where you need faster strength gain, but standard Portland OPC is fine for most applications and costs less.",
+     ]},
+    {q:"What is the difference between 9\" hollow and 6\" blocks?",
+     a:[
+       "9\" (230mm) hollow blocks are used for external walls and load-bearing internal walls. They provide better thermal mass and structural strength.",
+       "6\" (150mm) hollow blocks are used for non-load-bearing internal partition walls only. They are lighter and cheaper, saving cost on internal dividing walls.",
+       "Never use 6\" blocks for external walls or walls that carry structural loads from the roof or upper floors.",
+     ]},
+    {q:"What rebar size should I use?",
+     a:[
+       "Y12 (12mm deformed bar) is the standard for floor slabs, ring beams, and lintels in residential construction.",
+       "Y16 (16mm deformed bar) is used for columns, foundations, and heavily loaded beams where greater strength is needed.",
+       "Y8 (8mm bar) is used for ties and links in columns and beams — the smaller bars that wrap around the main vertical bars.",
+       "Your structural engineer or building drawings will specify the exact sizes and spacing required for your project.",
+     ]},
+  ],
+  "Working with Contractors":[
+    {q:"How do I check if a contractor's quote is fair?",
+     a:[
+       "Compare their material quantities against Briksafe's price directory. A contractor quoting you D 800 per bag of cement when the market price is D 525 is adding a hidden markup.",
+       "Ask for a full itemised breakdown: quantities, unit rates, and labour costs separately. Any contractor unwilling to provide this is a red flag.",
+       "Labour costs should typically be 30–40% of the total project cost for residential builds. If labour is quoted above 50%, question it.",
+       "Get at least two competing quotes. If one quote is significantly lower, ask why — it may mean lower quality materials or the contractor plans to cut corners.",
+     ]},
+    {q:"What should a building contract include?",
+     a:[
+       "A written contract should specify: scope of work, material specifications (grade, brand, quantity), payment schedule tied to milestones, completion timeline, and what happens if there are delays or defects.",
+       "Payment milestones are critical. A typical structure is: 20% deposit, 30% on foundation completion, 30% on wall plate level, 20% on completion.",
+       "Include a 5–10% retention clause: hold back 5–10% of the final payment for 3–6 months after completion to cover any defects that emerge.",
+       "If you are building from abroad, nominate a trusted local representative (family member, friend, or Briksafe) to inspect and sign off on each milestone before payment is released.",
+     ]},
+  ],
+};
+
+function FaqSection(){
+  const cats=Object.keys(FAQ_DATA);
+  const[activeCat,setActiveCat]=useState(cats[0]);
+  const[openIdx,setOpenIdx]=useState(null);
+  const[showAll,setShowAll]=useState(false);
+  const IChevron=()=>Ico([['polyline',{points:"6 9 12 15 18 9"}]],{width:18,height:18});
+  const faqs=FAQ_DATA[activeCat]||[];
+  const displayed=showAll?faqs:faqs.slice(0,3);
+  function toggle(i){setOpenIdx(openIdx===i?null:i);}
+  return h('section',{id:"guide",className:"sec faq-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"Building Guide"),
+      h('h2',{className:"sec-title"},"Common questions, answered."),
+      h('p',{className:"sec-sub"},"Practical advice for Gambians building from abroad."),
+      h('div',{className:"faq-layout"},
+        h('div',null,
+          h('nav',{className:"faq-cats","aria-label":"FAQ categories"},
+            ...cats.map(c=>h('button',{
+              key:c,className:"faq-cat-btn"+(activeCat===c?" on":""),
+              onClick:()=>{setActiveCat(c);setOpenIdx(null);setShowAll(false);}
+            },c))
+          )
+        ),
+        h('div',null,
+          h('div',{className:"faq-list"},
+            ...displayed.map((faq,i)=>h('div',{key:i,className:"faq-item"+(openIdx===i?" open":"")},
+              h('button',{className:"faq-q",onClick:()=>toggle(i),"aria-expanded":openIdx===i},
+                h('span',{className:"faq-q-text"},faq.q),
+                h('span',{className:"faq-chevron"},h(IChevron))
+              ),
+              openIdx===i&&h('div',{className:"faq-a"},
+                ...faq.a.map((para,j)=>h('p',{key:j},para))
+              )
+            ))
+          ),
+          faqs.length>3&&h('button',{
+            className:"faq-show-more",
+            onClick:()=>{setShowAll(v=>!v);setOpenIdx(null);},
+          },showAll?"\u2191 Show fewer questions":"Show "+(faqs.length-3)+" more questions")
+        )
+      )
+    )
+  );
+}
+
+/* ── PRICE UPDATE BANNER ─────────────────────────────────────────────────── */
+function PriceBanner(){
+  const BANNER_KEY='briksafe_banner_v20260501';
+  const[visible,setVisible]=useState(()=>localStorage.getItem(BANNER_KEY)!=='1');
+  if(!visible)return null;
+  function dismiss(){
+    setVisible(false);
+    localStorage.setItem(BANNER_KEY,'1');
+  }
+  const today=new Date();
+  // Next Monday calculation
+  const next=new Date(today);
+  next.setDate(today.getDate()+(8-today.getDay())%7||7);
+  const nextMonday=next.toLocaleDateString('en-GB',{day:'numeric',month:'long'});
+  return h('div',{className:"price-banner",role:"status"},
+    h('div',{className:"price-banner-left"},
+      h('span',{className:"price-banner-dot","aria-hidden":"true"}),
+      h('span',{className:"price-banner-text"},
+        h('strong',null,"Prices last reviewed: 1 May 2026"),
+        "\u00a0\u00b7\u00a0 Updated regularly, at least weekly."
+        +"\u00a0\u00b7\u00a0 Prices showing \u2191 \u2193 indicators have moved since last month."
+      )
+    ),
+    h('button',{className:"price-banner-dismiss",onClick:dismiss,"aria-label":"Dismiss notice"},"Dismiss")
+  );
+}
+
+/* ── SEASONAL WARNING ────────────────────────────────────────────────────── */
+function SeasonalBanner(){
+  const[visible,setVisible]=useState(()=>localStorage.getItem('briksafe_season_v2026')!=='1');
+  if(!visible)return null;
+  const month=new Date().getMonth(); // 0=Jan
+  const isDrySeason=month>=10||month<=4; // Nov–May
+  if(!isDrySeason)return null; // only show during dry season
+  return h('div',{className:"season-banner",role:"alert"},
+    h('span',{style:{fontSize:"1.1rem",flexShrink:0}},"\u26a0\ufe0f"),
+    h('span',null,
+      h('strong',null,"Dry season price alert (November\u2013May): "),
+      "Cement and steel prices typically rise 8\u201312% during the dry building season as demand peaks. "
+      +"If your project starts in the next 3\u20136 months, locking in a Briksafe quote now can save you money."
+    ),
+    h('button',{
+      className:"season-banner-close",
+      onClick:()=>{setVisible(false);localStorage.setItem('briksafe_season_v2026','1');},
+      "aria-label":"Dismiss seasonal alert"
+    },"Got it")
+  );
+}
+
+/* ── REMITTANCE CALCULATOR ───────────────────────────────────────────────── */
+// Remittance provider data — rates to GMD, typical fees in source currency
+const PROVIDERS={
+  GBP:[
+    {name:"Wave",fee:0,feeNote:"No transfer fee",rate:87.2},
+    {name:"Remitly",fee:1.99,feeNote:"£1.99 fee",rate:86.8},
+    {name:"WorldRemit",fee:2.99,feeNote:"£2.99 fee",rate:86.1},
+    {name:"Western Union",fee:3.90,feeNote:"£3.90 fee",rate:85.5},
+    {name:"Bank Transfer",fee:15,feeNote:"~£15 fee",rate:82.0},
+  ],
+  USD:[
+    {name:"Wave",fee:0,feeNote:"No transfer fee",rate:68.5},
+    {name:"Remitly",fee:1.99,feeNote:"$1.99 fee",rate:68.0},
+    {name:"WorldRemit",fee:2.99,feeNote:"$2.99 fee",rate:67.4},
+    {name:"Western Union",fee:4.99,feeNote:"$4.99 fee",rate:66.9},
+    {name:"Bank Transfer",fee:25,feeNote:"~$25 fee",rate:64.5},
+  ],
+  EUR:[
+    {name:"Wave",fee:0,feeNote:"No transfer fee",rate:74.2},
+    {name:"Remitly",fee:1.99,feeNote:"€1.99 fee",rate:73.8},
+    {name:"WorldRemit",fee:2.99,feeNote:"€2.99 fee",rate:73.1},
+    {name:"Western Union",fee:3.90,feeNote:"€3.90 fee",rate:72.5},
+    {name:"Bank Transfer",fee:20,feeNote:"~€20 fee",rate:70.0},
+  ],
+};
+const CUR_SYMS={GBP:"\u00a3",USD:"$",EUR:"\u20ac"};
+
+function RemittanceCalc(){
+  const[amount,setAmount]=useState("1000");
+  const[fromCur,setFromCur]=useState("GBP");
+  const sym=CUR_SYMS[fromCur];
+  const providers=PROVIDERS[fromCur]||[];
+  const num=parseFloat(amount)||0;
+
+  return h('section',{id:"remittance",className:"sec remit-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"Remittance Calculator"),
+      h('h2',{className:"sec-title"},"How much do you need to send?"),
+      h('p',{className:"sec-sub"},
+        "Enter the amount you want to send and see how much arrives in GMD after transfer fees \u2014 compared across the most popular services used by the Gambian diaspora."
+      ),
+      h('div',{className:"remit-grid"},
+        h('div',{className:"remit-card"},
+          h('div',{className:"remit-card-title"},"Your transfer"),
+          h('div',{className:"remit-field"},
+            h('label',{className:"remit-label",htmlFor:"remit-cur"},"You are sending from"),
+            h('select',{
+              id:"remit-cur",className:"remit-select",
+              value:fromCur,onChange:e=>setFromCur(e.target.value),
+            },
+              h('option',{value:"GBP"},"\u00a3 GBP — British Pounds"),
+              h('option',{value:"USD"},"$ USD — US Dollars"),
+              h('option',{value:"EUR"},"\u20ac EUR — Euros"),
+            )
+          ),
+          h('div',{className:"remit-field"},
+            h('label',{className:"remit-label",htmlFor:"remit-amt"},"Amount to send"),
+            h('div',{className:"remit-input-wrap"},
+              h('span',{className:"remit-prefix"},sym),
+              h('input',{
+                id:"remit-amt",className:"remit-input",
+                type:"number",min:"0",step:"50",
+                value:amount,onChange:e=>setAmount(e.target.value),
+                "aria-label":"Amount in "+fromCur,
+              })
+            )
+          ),
+          h('div',{className:"remit-prov-title"},"Provider comparison"),
+          ...providers.map(p=>{
+            const arrives=Math.floor((num-p.fee)*p.rate);
+            return h('div',{key:p.name,className:"remit-prov"},
+              h('div',null,
+                h('div',{className:"remit-prov-name"},p.name),
+                h('div',{className:"remit-prov-detail"},p.feeNote+" \u00b7 Rate: "+p.rate+" GMD/"+fromCur)
+              ),
+              h('div',{className:"remit-prov-rate"},
+                num>0?"D\u202f"+arrives.toLocaleString('en-GB'):"D\u202f\u2014"
+              )
+            );
+          }),
+          h('p',{className:"remit-note"},
+            "\u26a0\ufe0f Rates and fees are indicative only and change daily. Always confirm the exact rate before sending. Wave currently offers the best rates with no fees for most Gambian corridors."
+          )
+        ),
+        num>0&&h('div',{className:"remit-card"},
+          h('div',{className:"remit-card-title"},"What your money builds"),
+          h('div',{className:"remit-result"},
+            ...[
+              ["You send",sym+num.toLocaleString('en-GB'),false],
+              ["Arrives in Gambia (best rate)","D\u202f"+Math.floor((num-0)*providers[0].rate).toLocaleString('en-GB'),true],
+              ["Bags of cement",Math.floor((num*providers[0].rate)/525)+" bags",false],
+              ['Hollow blocks 9"',Math.floor((num*providers[0].rate)/42)+" pieces",false],
+              ["Roof sheets (3m)",Math.floor((num*providers[0].rate)/920)+" sheets",false],
+            ].map(([l,v,big])=>h('div',{key:l,className:"remit-result-row"},
+              h('span',{className:"remit-result-lbl"},l),
+              h('span',{className:"remit-result-val"+(big?" big":"")},v)
+            ))
+          ),
+          h('p',{className:"remit-note"},"Calculations use the best available rate above. Actual GMD received may vary.")
+        )
+      )
+    )
+  );
+}
+
+/* ── QUANTITY CALCULATORS ────────────────────────────────────────────────── */
+const CALCS=[
+  {
+    id:"wall",label:"Wall Blocks",title:"Blocks needed for a wall",sub:"Calculate how many 9\" hollow blocks you need for any wall",
+    fields:[
+      {id:"wlen",label:"Wall Length (m)",def:"5",type:"number"},
+      {id:"wht",label:"Wall Height (m)",def:"3",type:"number"},
+      {id:"wdoors",label:"Number of Doors",def:"1",type:"number"},
+      {id:"wwin",label:"Number of Windows",def:"2",type:"number"},
+    ],
+    calc(v){
+      const len=parseFloat(v.wlen)||0,ht=parseFloat(v.wht)||0;
+      const doors=parseInt(v.wdoors)||0,wins=parseInt(v.wwin)||0;
+      const gross=len*ht;
+      const openings=doors*(2.1*0.9)+wins*(1.2*1.2);
+      const net=Math.max(gross-openings,0);
+      const blocks=Math.ceil(net*12*1.08);
+      const cement=Math.ceil(blocks/80);
+      const sand=+(blocks*0.006).toFixed(1);
+      return [
+        {l:"Wall area (gross)",v:gross.toFixed(1)+" m\u00b2",hero:false},
+        {l:"Opening deductions",v:openings.toFixed(1)+" m\u00b2",hero:false},
+        {l:"Net wall area",v:net.toFixed(1)+" m\u00b2",hero:false},
+        {l:"Blocks needed (inc. 8% waste)",v:blocks.toLocaleString(),hero:true},
+        {l:"Cement bags for mortar",v:cement+" bags",hero:false},
+        {l:"Sand for mortar",v:sand+" tons",hero:false},
+      ];
+    },
+    formula:"Based on 12 blocks per m\u00b2 for 9\" hollow blocks, with 8% cutting waste, 1 bag cement per 80 blocks, and standard door (2.1\u00d70.9m) and window (1.2\u00d71.2m) deductions."
+  },
+  {
+    id:"slab",label:"Concrete Slab",title:"Concrete for a floor slab",sub:"Cement, sand and aggregate for a 100mm (4\") concrete slab",
+    fields:[
+      {id:"slen",label:"Length (m)",def:"8",type:"number"},
+      {id:"swid",label:"Width (m)",def:"6",type:"number"},
+      {id:"sthick",label:"Thickness (mm)",def:"100",type:"number"},
+    ],
+    calc(v){
+      const l=parseFloat(v.slen)||0,w=parseFloat(v.swid)||0,t=(parseFloat(v.sthick)||100)/1000;
+      const vol=l*w*t;
+      const cement=Math.ceil(vol*7*1.05);
+      const sand=+(vol*0.45*1.6*1.1).toFixed(1);
+      const gravel=+(vol*0.9*1.8*1.1).toFixed(1);
+      const rebar=Math.ceil(l*w*1.2);
+      return [
+        {l:"Slab volume",v:vol.toFixed(2)+" m\u00b3",hero:false},
+        {l:"Cement bags (1:2:4 mix)",v:cement+" bags",hero:true},
+        {l:"Sharp sand",v:sand+" tons",hero:false},
+        {l:"Gravel / aggregate",v:gravel+" tons",hero:false},
+        {l:"Y12 rebar bars",v:rebar+" bars",hero:false},
+      ];
+    },
+    formula:"Based on a 1:2:4 mix ratio. 7 bags of cement per m\u00b3, with 5% waste. Sand and aggregate quantities include 10% waste allowance. Rebar based on 1.2 bars per m\u00b2."
+  },
+  {
+    id:"roof",label:"Roof Sheets",title:"Roofing sheets for a pitched roof",sub:"How many corrugated iron sheets you need",
+    fields:[
+      {id:"rlen",label:"Building Length (m)",def:"10",type:"number"},
+      {id:"rwid",label:"Building Width (m)",def:"8",type:"number"},
+      {id:"rpitch",label:"Roof Pitch",def:"25",type:"select",opts:[["15","15\u00b0 (low)"],["25","25\u00b0 (standard)"],["35","35\u00b0 (steep)"],["45","45\u00b0 (very steep)"]]},
+      {id:"rsheet",label:"Sheet Length",def:"3",type:"select",opts:[["3","3m sheets"],["6","6m sheets"]]},
+    ],
+    calc(v){
+      const l=parseFloat(v.rlen)||0,w=parseFloat(v.rwid)||0;
+      const pitch=parseFloat(v.rpitch)||25;
+      const sheetLen=parseFloat(v.rsheet)||3;
+      const pitchFactor={15:1.04,25:1.10,35:1.22,45:1.41}[pitch]||1.10;
+      const roofArea=l*(w/2)*pitchFactor*2; // both sides
+      const usableW=0.76; // effective cover width with overlap
+      const sheetsWide=Math.ceil((w/2)*pitchFactor/sheetLen)+1;
+      const sheetsLong=Math.ceil(l/usableW);
+      const total=Math.ceil(sheetsWide*sheetsLong*2*1.05);
+      const ridgeCaps=Math.ceil(l/3)+1;
+      const nails=Math.ceil(total*0.25);
+      const battens=Math.ceil(roofArea*0.8);
+      return [
+        {l:"Roof area (both sides)",v:roofArea.toFixed(1)+" m\u00b2",hero:false},
+        {l:sheetLen+"m sheets needed (inc. waste)",v:total+" sheets",hero:true},
+        {l:"Ridge caps (3m)",v:ridgeCaps+" pieces",hero:false},
+        {l:'Roofing nails 3" (kg)',v:nails+" kg",hero:false},
+        {l:"Timber battens (pieces)",v:battens+" pieces",hero:false},
+      ];
+    },
+    formula:"Based on 0.76m effective cover width per sheet with standard 70mm side overlap. Pitch factor applied to both roof slopes. 5% waste included."
+  },
+  {
+    id:"paint",label:"Paint Coverage",title:"Paint needed for walls & ceiling",sub:"How many buckets of emulsion to cover your rooms",
+    fields:[
+      {id:"prooms",label:"Number of Rooms",def:"4",type:"number"},
+      {id:"plen",label:"Avg Room Length (m)",def:"4",type:"number"},
+      {id:"pwid",label:"Avg Room Width (m)",def:"3.5",type:"number"},
+      {id:"pht",label:"Ceiling Height (m)",def:"2.8",type:"number"},
+      {id:"pcoats",label:"Number of Coats",def:"2",type:"select",opts:[["1","1 coat"],["2","2 coats"],["3","3 coats"]]},
+    ],
+    calc(v){
+      const rooms=parseInt(v.prooms)||1,l=parseFloat(v.plen)||4,w=parseFloat(v.pwid)||3.5,ht=parseFloat(v.pht)||2.8,coats=parseInt(v.pcoats)||2;
+      const wallArea=rooms*2*(l+w)*ht*0.85; // 15% deduction for doors/windows
+      const ceilArea=rooms*l*w;
+      const total=(wallArea+ceilArea)*coats;
+      const buckets20L=Math.ceil(total/80); // emulsion ~8m²/L → 160m² per 20L but walls absorb more, use 80m²
+      const undercoat=Math.ceil(rooms/2);
+      return [
+        {l:"Total wall area",v:wallArea.toFixed(0)+" m\u00b2",hero:false},
+        {l:"Total ceiling area",v:ceilArea.toFixed(0)+" m\u00b2",hero:false},
+        {l:"Total area to paint",v:total.toFixed(0)+" m\u00b2",hero:false},
+        {l:"Emulsion 20L buckets",v:buckets20L+" buckets",hero:true},
+        {l:"Undercoat (4L tins)",v:undercoat+" tins",hero:false},
+      ];
+    },
+    formula:"Based on 80m\u00b2 coverage per 20L bucket on plastered surfaces. 15% deduction for door and window openings. Add 10% extra for rough or porous walls."
+  },
+];
+
+function QuantityCalcs({currency}){
+  const{add}=useCart();
+  const[activeCalc,setActiveCalc]=useState(CALCS[0].id);
+  const calc=CALCS.find(c=>c.id===activeCalc)||CALCS[0];
+  const initVals=Object.fromEntries(calc.fields.map(f=>[f.id,f.def]));
+  const[vals,setVals]=useState(initVals);
+
+  // Reset values when switching calc
+  function switchCalc(id){
+    setActiveCalc(id);
+    const nc=CALCS.find(c=>c.id===id);
+    if(nc)setVals(Object.fromEntries(nc.fields.map(f=>[f.id,f.def])));
+  }
+
+  const results=useMemo(()=>{
+    try{return calc.calc(vals);}catch{return [];}
+  },[calc,vals]);
+
+  return h('section',{id:"calculators",className:"sec calc-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"Material Calculators"),
+      h('h2',{className:"sec-title"},"Calculate exact quantities."),
+      h('p',{className:"sec-sub"},
+        "Stop guessing how much material you need. Enter your dimensions and get instant, accurate quantities for blocks, concrete, roofing, and paint."
+      ),
+      h('div',{className:"calc-tabs",role:"tablist"},
+        ...CALCS.map(c=>h('button',{
+          key:c.id,className:"calc-tab"+(activeCalc===c.id?" on":""),
+          onClick:()=>switchCalc(c.id),role:"tab","aria-selected":activeCalc===c.id,
+        },c.label))
+      ),
+      h('div',{className:"calc-card"},
+        h('div',{className:"calc-card-hdr"},
+          h('div',{className:"calc-card-title"},calc.title),
+          h('div',{className:"calc-card-sub"},calc.sub)
+        ),
+        h('div',{className:"calc-body"},
+          h('div',{className:"calc-inputs"},
+            ...calc.fields.map(f=>h('div',{key:f.id,className:"calc-field"},
+              h('label',{htmlFor:"calc-"+f.id},f.label),
+              f.type==="select"
+                ? h('select',{
+                    id:"calc-"+f.id,
+                    value:vals[f.id]||f.def,
+                    onChange:e=>setVals(p=>({...p,[f.id]:e.target.value})),
+                  },
+                    ...(f.opts||[]).map(([v,l])=>h('option',{key:v,value:v},l))
+                  )
+                : h('input',{
+                    id:"calc-"+f.id,
+                    type:"number",min:"0",step:"0.5",
+                    value:vals[f.id]||"",
+                    onChange:e=>setVals(p=>({...p,[f.id]:e.target.value})),
+                  })
+            ))
+          ),
+          results.length>0&&h('div',{className:"calc-results"},
+            ...results.map(r=>h('div',{key:r.l,className:"calc-result-row"},
+              h('span',{className:"calc-result-lbl"},r.l),
+              h('span',{className:"calc-result-val"+(r.hero?" hero":"")},r.v)
+            ))
+          ),
+          h('p',{className:"calc-formula"},calc.formula)
+        )
+      )
+    )
+  );
+}
+
+/* ── WHAT HAPPENS NEXT ───────────────────────────────────────────────────── */
+function WhatHappensNext(){
+  const steps=[
+    {state:"done",  time:"Immediate",    title:"Quote received",           body:"As soon as you submit, Briksafe receives your full quote summary including all materials, quantities, and your delivery site."},
+    {state:"active",time:"Within 48 hrs",title:"Briksafe verifies pricing", body:"We check current supplier prices for every item in your quote. If anything has changed since our last update, we\u2019ll note it clearly."},
+    {state:"wait",  time:"Within 48 hrs",title:"We contact you on WhatsApp",body:"A real person from Briksafe will message you on the WhatsApp number you provided. We\u2019ll confirm the final pricing and answer any questions."},
+    {state:"wait",  time:"On agreement", title:"Payment agreed",            body:"We agree a payment plan with you \u2014 typically in phases. No full payment upfront. Nothing is purchased until you are happy with the confirmed price."},
+    {state:"wait",  time:"After payment",title:"Materials sourced & checked",body:"We purchase from our vetted local suppliers and photograph every delivery. You receive photo evidence of materials before they leave the yard."},
+    {state:"wait",  time:"As scheduled", title:"Delivery to your site",     body:"Materials are delivered to your specified site in The Gambia. We confirm delivery with photos and a signed receipt from your local contact."},
+  ];
+  return h('section',{id:"next-steps",className:"sec next-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"After You Submit"),
+      h('h2',{className:"sec-title"},"What happens after you request a quote."),
+      h('p',{className:"sec-sub"},
+        "No black boxes. No waiting and wondering. Here is exactly what Briksafe does after you press submit \u2014 and when you can expect to hear from us."
+      ),
+      h('div',{className:"next-steps"},
+        ...steps.map((s,i)=>h('div',{key:i,className:"next-step"},
+          h('div',{className:"next-num "+s.state},
+            s.state==="done"?"\u2713":s.state==="active"?h('span',{style:{fontSize:".55rem",letterSpacing:"-.01em"}},"NOW"):(i+1).toString()
+          ),
+          h('div',{className:"next-content"},
+            h('div',{className:"next-title"},s.title),
+            h('div',{className:"next-body"},s.body),
+            h('span',{className:"next-time"},s.time)
+          )
+        ))
+      )
+    )
+  );
+}
+
+/* ── COMPARISON TOOL ─────────────────────────────────────────────────────── */
+const COMPARISONS=[
+  {
+    id:"roof",label:"Roof Sheets",
+    a:{
+      name:"0.55mm Long Span Sheet",best:true,
+      rows:[
+        {l:"Gauge / Thickness",v:"0.55mm (heavy gauge)"},
+        {l:"Sheet length available",v:"3m and 6m"},
+        {l:"Price per 3m sheet",v:"D 920"},
+        {l:"Lifespan (maintained)",v:"20\u201330 years"},
+        {l:"Noise in rain",v:"Moderate \u2014 can be lined"},
+        {l:"Best for",v:"Permanent residential buildings"},
+        {l:"Briksafe recommends",v:"Yes \u2014 better long-term value"},
+      ]
+    },
+    b:{
+      name:"0.4mm Economy Sheet",best:false,
+      rows:[
+        {l:"Gauge / Thickness",v:"0.4mm (light gauge)"},
+        {l:"Sheet length available",v:"3m only"},
+        {l:"Price per 3m sheet",v:"D 720"},
+        {l:"Lifespan (maintained)",v:"8\u201312 years"},
+        {l:"Noise in rain",v:"Louder, thinner metal"},
+        {l:"Best for",v:"Outbuildings, temporary structures"},
+        {l:"Briksafe recommends",v:"Only if budget is very tight"},
+      ]
+    },
+    note:"The 0.55mm sheet costs D 200 more per sheet but lasts 2\u00d7 longer. For a 3-bedroom house needing ~60 sheets, the 0.55mm option costs D 12,000 more upfront but saves replacement in 8\u201310 years."
+  },
+  {
+    id:"block",label:"9\" vs 6\" Blocks",
+    a:{
+      name:'Hollow Block 9" (230mm)',best:true,
+      rows:[
+        {l:"Thickness",v:"230mm (9 inches)"},
+        {l:"Price per piece",v:"D 42"},
+        {l:"Structural use",v:"External walls, load-bearing"},
+        {l:"Thermal performance",v:"Good \u2014 keeps rooms cooler"},
+        {l:"Weight",v:"Heavier \u2014 stronger foundation needed"},
+        {l:"Suitable for upper floors",v:"Yes \u2014 with proper design"},
+        {l:"Briksafe recommends",v:"All external walls"},
+      ]
+    },
+    b:{
+      name:'Hollow Block 6" (150mm)',best:false,
+      rows:[
+        {l:"Thickness",v:"150mm (6 inches)"},
+        {l:"Price per piece",v:"D 34"},
+        {l:"Structural use",v:"Internal partitions ONLY"},
+        {l:"Thermal performance",v:"Lower \u2014 thinner wall"},
+        {l:"Weight",v:"Lighter \u2014 less load on slab"},
+        {l:"Suitable for upper floors",v:"Non-load-bearing only"},
+        {l:"Briksafe recommends",v:"Internal dividing walls only"},
+      ]
+    },
+    note:"Never use 6\" blocks for external walls or walls carrying roof or floor loads. Mixing correctly (9\" external, 6\" internal) can save D 8 per internal block without compromising the structure."
+  },
+  {
+    id:"cement",label:"OPC vs Rapid Set",
+    a:{
+      name:"Portland Cement OPC",best:true,
+      rows:[
+        {l:"Type",v:"Ordinary Portland Cement"},
+        {l:"Price per bag",v:"D 525"},
+        {l:"Initial set time",v:"2\u20134 hours"},
+        {l:"Full strength (28 days)",v:"Yes \u2014 standard cure"},
+        {l:"Best for",v:"All general construction work"},
+        {l:"Heat generation",v:"Normal \u2014 low cracking risk"},
+        {l:"Briksafe recommends",v:"Default choice for all works"},
+      ]
+    },
+    b:{
+      name:"Rapid Set Cement",best:false,
+      rows:[
+        {l:"Type",v:"Modified rapid hardening"},
+        {l:"Price per bag",v:"D 610"},
+        {l:"Initial set time",v:"30\u201360 minutes"},
+        {l:"Full strength (28 days)",v:"Achieves earlier, slightly lower"},
+        {l:"Best for",v:"Repairs, urgent pours, wet conditions"},
+        {l:"Heat generation",v:"Higher \u2014 crack risk if not cured well"},
+        {l:"Briksafe recommends",v:"Only where speed is essential"},
+      ]
+    },
+    note:"Rapid Set costs D 85 more per bag and is only necessary when you need strength quickly (e.g. foundations where formwork must come off fast). For most residential work, standard OPC gives better quality at lower cost."
+  },
+  {
+    id:"pipe",label:"Plastic vs Metal Pipe",
+    a:{
+      name:"uPVC Plastic Pipe",best:true,
+      rows:[
+        {l:"Material",v:"Unplasticised PVC"},
+        {l:"Price (1\" \u00d7 3m)",v:"D 260"},
+        {l:"Lifespan",v:"50+ years if protected from UV"},
+        {l:"Corrosion resistance",v:"Excellent \u2014 no rust"},
+        {l:"Ease of fitting",v:"Easy \u2014 solvent weld joints"},
+        {l:"Suitable for drinking water",v:"Yes \u2014 use BS/DIN rated pipe"},
+        {l:"Briksafe recommends",v:"Yes \u2014 for all plumbing"},
+      ]
+    },
+    b:{
+      name:"Galvanised Steel Pipe",best:false,
+      rows:[
+        {l:"Material",v:"Steel with zinc coating"},
+        {l:"Price (1\" \u00d7 3m)",v:"D 480"},
+        {l:"Lifespan",v:"15\u201325 years (rust eventually)"},
+        {l:"Corrosion resistance",v:"Moderate \u2014 zinc wears over time"},
+        {l:"Ease of fitting",v:"Harder \u2014 threaded joints, tools needed"},
+        {l:"Suitable for drinking water",v:"Initially yes, degrades with age"},
+        {l:"Briksafe recommends",v:"Outdoor/structural use only"},
+      ]
+    },
+    note:"uPVC is now the standard for residential plumbing in The Gambia. It is cheaper, lighter, and far easier to install. Galvanised steel is still used for exposed outdoor runs or where physical protection is needed."
+  },
+];
+
+function ComparisonTool(){
+  const[active,setActive]=useState(COMPARISONS[0].id);
+  const comp=COMPARISONS.find(c=>c.id===active)||COMPARISONS[0];
+  return h('section',{id:"compare",className:"sec compare-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"Material Comparisons"),
+      h('h2',{className:"sec-title"},"Which material should you choose?"),
+      h('p',{className:"sec-sub"},
+        "Side-by-side comparisons of the most common choices builders face \u2014 so you can make an informed decision before you order."
+      ),
+      h('div',{className:"compare-tabs"},
+        ...COMPARISONS.map(c=>h('button',{
+          key:c.id,className:"compare-tab"+(active===c.id?" on":""),
+          onClick:()=>setActive(c.id),
+        },c.label))
+      ),
+      h('div',{className:"compare-grid"},
+        [comp.a,comp.b].map(col=>h('div',{key:col.name,className:"compare-col"},
+          h('div',{className:"compare-hdr"+(col.best?" best":"")},
+            h('div',{className:"compare-hdr-name"},col.name),
+            col.best&&h('div',{className:"compare-best-tag"},h(ICheck),"\u00a0Briksafe recommends")
+          ),
+          h('div',{className:"compare-rows"},
+            ...col.rows.map(r=>h('div',{key:r.l,className:"compare-row"},
+              h('div',{className:"compare-row-lbl"},r.l),
+              h('div',{className:"compare-row-val"},r.v)
+            ))
+          )
+        ))
+      ),
+      h('p',{className:"compare-footnote"},comp.note)
+    )
+  );
+}
+
+/* ── SHARE QUOTE (WhatsApp) + PRINT ──────────────────────────────────────── */
+function ShareAndPrint({items,currency}){
+  const total=items.reduce((s,i)=>s+i.gmd*(i.qty||1),0);
+
+  function buildMessage(){
+    const lines=items.map(i=>`• ${i.name} × ${i.qty} ${i.unit} = ${fmt(i.gmd*i.qty,currency)}`).join('\n');
+    return encodeURIComponent(
+      `Hi Briksafe 👋\n\nI'd like a quote for the following materials:\n\n${lines}\n\nEstimated total: ${fmt(total,currency)}\n\nCould you please confirm pricing and availability? Thank you.`
+    );
+  }
+
+  function printQuote(){
+    window.print();
+  }
+
+  if(!items.length)return null;
+
+  return h('div',{style:{display:"flex",gap:"10px",flexWrap:"wrap",marginTop:"var(--sp-4)"}},
+    h('a',{
+      href:"https://wa.me/2203569784?text="+buildMessage(),
+      target:"_blank",rel:"noopener noreferrer",
+      className:"wa-btn",
+      style:{fontSize:"var(--t-xs)",padding:"10px 16px",minHeight:"40px"},
+      "aria-label":"Share quote on WhatsApp",
+    },
+      h(IWp),
+      "Share via WhatsApp"
+    ),
+    h('button',{
+      onClick:printQuote,
+      style:{
+        height:"40px",padding:"0 16px",
+        background:"#fff",color:"var(--ink-700)",
+        border:"1.5px solid var(--ink-200)",borderRadius:"var(--r)",
+        fontSize:"var(--t-xs)",fontWeight:700,cursor:"pointer",
+        display:"flex",alignItems:"center",gap:"6px",
+        transition:"all .15s",
+      },
+      onMouseOver:e=>{e.currentTarget.style.borderColor="var(--ink-400)"},
+      onMouseOut:e=>{e.currentTarget.style.borderColor="var(--ink-200)"},
+    },
+      h('svg',{width:14,height:14,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"},
+        h('polyline',{points:"6 9 6 2 18 2 18 9"}),
+        h('path',{d:"M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"}),
+        h('rect',{x:6,y:14,width:12,height:8})
+      ),
+      "Print Quote"
+    )
+  );
+}
+
+/* ── ABOUT BRIKSAFE ──────────────────────────────────────────────────────── */
+function About(){
+  return h('section',{id:"about",className:"sec about-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"About Briksafe"),
+      h('h2',{className:"sec-title"},"Who we are."),
+      h('div',{className:"about-grid"},
+        h('div',{className:"about-story"},
+          h('p',null,
+            "Briksafe was started by a Gambian family member who experienced firsthand how difficult \u2014 and how risky \u2014 it is to coordinate a building project from abroad. Sending money home for materials meant trusting people you couldn\u2019t verify, paying prices you couldn\u2019t confirm, and waiting weeks for updates that sometimes never came."
+          ),
+          h('p',null,
+            "We built Briksafe to be the transparent, trustworthy service we wished had existed. We publish real market prices from The Gambia every week. When you submit a quote, a real person reviews it, confirms pricing with our suppliers, and contacts you directly on WhatsApp before a single dalasi changes hands."
+          ),
+          h('p',null,
+            "We are based in The Gambia with connections across the UK, US, and European diaspora communities. We are a small operation with a specific focus: making it possible for Gambians abroad to build back home with confidence, not anxiety."
+          ),
+          h('p',null,
+            "Briksafe is not a marketplace and not a financial service. We act as a trusted procurement agent \u2014 sourcing materials, verifying quality, and coordinating delivery on your behalf. Our service fee is always agreed with you before any purchase is made."
+          )
+        ),
+        h('div',null,
+          h('div',{className:"about-founder"},
+            h('div',{className:"about-founder-top"},
+              h('div',{className:"about-avatar"},"BS"),
+              h('div',null,
+                h('div',{className:"about-founder-name"},"Briksafe Team"),
+                h('div',{className:"about-founder-role"},"Founded in The Gambia")
+              )
+            ),
+            h('p',{className:"about-founder-bio"},
+              "We are a small team with deep roots in the Gambian construction market and strong connections to the diaspora communities in the UK, USA, and Europe. Every quote is handled personally. We do not use automated systems to manage your project."
+            ),
+            h('div',{className:"about-founder-contact"},
+              h('a',{
+                href:"https://wa.me/2203569784",
+                target:"_blank",rel:"noopener noreferrer",
+                className:"wa-btn",
+                style:{fontSize:"var(--t-xs)",padding:"9px 16px",minHeight:"40px"},
+              },h(IWp),"WhatsApp us"),
+              h('a',{
+                href:"mailto:hello@briksafe.com",
+                style:{fontSize:"var(--t-sm)",color:"var(--forest)",fontWeight:600,textDecoration:"none"},
+              },"hello@briksafe.com")
+            )
+          )
+        )
+      )
+    )
+  );
+}
+
+/* ── PRIVACY POLICY ──────────────────────────────────────────────────────── */
+function PrivacyPolicy(){
+  return h('section',{id:"privacy",className:"sec privacy-sec"},
+    h('div',{className:"wrap"},
+      h('div',{className:"sec-eyebrow"},"Legal"),
+      h('h2',{className:"sec-title"},"Privacy Policy"),
+      h('div',{className:"privacy-content"},
+        h('span',{className:"privacy-updated"},"Last updated: 1 May 2026"),
+        h('h3',null,"Who we are"),
+        h('p',null,
+          "Briksafe is a building materials procurement service for the Gambian diaspora. We operate as an independent procurement agent and are not a financial service or licensed broker. You can contact us at ",
+          h('a',{href:"mailto:hello@briksafe.com"},"hello@briksafe.com"),
+          " or via WhatsApp at +220 356 9784."
+        ),
+        h('h3',null,"What data we collect"),
+        h('p',null,"When you submit a quote request through our website, we collect:"),
+        h('ul',null,
+          h('li',null,"Your full name"),
+          h('li',null,"Your WhatsApp phone number"),
+          h('li',null,"Your location (country)"),
+          h('li',null,"Your delivery site address in The Gambia"),
+          h('li',null,"Your preferred timeline and any additional notes you provide"),
+          h('li',null,"A summary of the materials in your quote request")
+        ),
+        h('p',null,"We do not collect payment card details, bank account information, or any financial data through this website."),
+        h('h3',null,"How we use your data"),
+        h('p',null,"Your information is used solely to:"),
+        h('ul',null,
+          h('li',null,"Prepare and review your quote request"),
+          h('li',null,"Contact you on WhatsApp to confirm pricing and availability"),
+          h('li',null,"Coordinate materials sourcing and delivery in The Gambia")
+        ),
+        h('p',null,"We will never use your data for marketing purposes without your explicit consent, and we will never sell or share your personal information with third parties outside of what is necessary to fulfil your request."),
+        h('h3',null,"Where your data is stored"),
+        h('p',null,
+          "Quote submissions are processed through Formspree (formspree.io), a third-party form service. Formspree stores submissions on servers located in the United States. By submitting the form, you acknowledge this. Formspree\u2019s privacy policy is available at ",
+          h('a',{href:"https://formspree.io/legal/privacy-policy",target:"_blank",rel:"noopener noreferrer"},"formspree.io/legal/privacy-policy"),
+          "."
+        ),
+        h('p',null,"We may also retain a copy of your submission in a private spreadsheet for operational purposes. This data is stored securely and is only accessible to the Briksafe team."),
+        h('h3',null,"How long we keep your data"),
+        h('p',null,"We retain quote submission data for up to 12 months from the date of submission, or until you request deletion. After this period, personal data is deleted from our records."),
+        h('h3',null,"Your rights (GDPR and UK GDPR)"),
+        h('p',null,"If you are located in the UK or European Union, you have the following rights regarding your personal data:"),
+        h('ul',null,
+          h('li',null,"The right to access a copy of the data we hold about you"),
+          h('li',null,"The right to request correction of inaccurate data"),
+          h('li',null,"The right to request deletion of your data"),
+          h('li',null,"The right to withdraw consent at any time")
+        ),
+        h('p',null,
+          "To exercise any of these rights, contact us at ",
+          h('a',{href:"mailto:hello@briksafe.com"},"hello@briksafe.com"),
+          ". We will respond within 30 days."
+        ),
+        h('h3',null,"Cookies and tracking"),
+        h('p',null,"This website does not use advertising cookies or third-party tracking pixels. We use localStorage (browser-based storage) to save your currency preference and dismissed notifications locally on your device. This data never leaves your browser and is not transmitted to us."),
+        h('h3',null,"Changes to this policy"),
+        h('p',null,"We may update this privacy policy from time to time. The date at the top of this page reflects the most recent revision. Continued use of the website after changes constitutes acceptance of the updated policy."),
+        h('h3',null,"Contact"),
+        h('p',null,
+          "For any privacy-related queries, contact us at ",
+          h('a',{href:"mailto:hello@briksafe.com"},"hello@briksafe.com"),
+          " or on WhatsApp at +220 356 9784."
+        )
+      )
+    )
+  );
+}
+
+/* ── MOBILE STICKY CTA ───────────────────────────────────────────────────── */
+function MobileSticky({setCartOpen}){
+  const{count}=useCart();
+  return h('div',{className:"mob-sticky","aria-label":"Quick actions"},
+    h('button',{
+      className:"mob-sticky-quote",
+      onClick:()=>setCartOpen(true),
+      "aria-label":"Open quote builder",
+    },
+      h(ICart),
+      count>0 ? "View Quote ("+count+")" : "Build Your Quote"
+    ),
+    h('a',{
+      className:"mob-sticky-wa",
+      href:"https://wa.me/2203569784",
+      target:"_blank",rel:"noopener noreferrer",
+      "aria-label":"WhatsApp Briksafe",
+    },h(IWp))
   );
 }
 
 /* ── APP ───────────────────────────────────────────────────────────────── */
 function App(){
   const[cartOpen,setCartOpen]=useState(false);
-  const[currency,setCurrency]=useState("GMD");
+  const[currency,setCurrency]=useState(()=>localStorage.getItem('briksafe_currency')||'GMD');
   return h(CartProvider,null,
+    h(AppInner,{cartOpen,setCartOpen,currency,setCurrency})
+  );
+}
+
+// Inner app so we can access cart context for project loading
+function AppInner({cartOpen,setCartOpen,currency,setCurrency}){
+  const{add,clear}=useCart();
+
+  const{items}=useCart();
+  const total=items.reduce((s,i)=>s+i.gmd*(i.qty||1),0);
+
+  // Listen for project load events from SavedProjects component
+  useEffect(()=>{
+    function handler(e){
+      clear();
+      setTimeout(()=>{
+        e.detail.forEach(item=>add(item));
+        setCartOpen(true);
+      },100);
+    }
+    window.addEventListener('briksafe:loadproject',handler);
+    return()=>window.removeEventListener('briksafe:loadproject',handler);
+  },[add,clear,setCartOpen]);
+
+  return h(Fragment,null,
     h(Header,{setCartOpen}),
+    h(PriceBanner),
     h('main',null,
       h(Hero),
-      h(Materials,{currency,setCurrency}),
-      h(HowItWorks),
-      h(WhyTrust),
+      h(Materials,{currency,setCurrency:c=>{setCurrency(c);localStorage.setItem('briksafe_currency',c);}}),
+
+      h(TrustHow),
+      h(ToolsHub,{currency}),
+      h(FaqSection),
+      h(SavedProjects,{currency}),
       h(QuoteForm,{currency})
     ),
     h(Footer),
-    h(CartSidebar,{open:cartOpen,onClose:()=>setCartOpen(false),currency})
+    h(CartSidebar,{open:cartOpen,onClose:()=>setCartOpen(false),currency}),
+    // Print-only quote — invisible on screen, shown only when printing
+    h('div',{className:"print-quote","aria-hidden":"true"},
+      h('div',{className:"pq-header"},
+        h('div',{className:"pq-brand"},"Briksafe — Quote Request"),
+        h('div',{className:"pq-meta"},"Prepared: "+new Date().toLocaleDateString('en-GB')+" \u00b7 briksafe.com \u00b7 WhatsApp: +220 356 9784")
+      ),
+      items.length===0
+        ? h('p',null,"No items in quote.")
+        : [
+            h('table',{key:"t",className:"pq-table"},
+              h('thead',null,h('tr',null,
+                ...["Material","Unit","Qty","Price / Unit","Line Total"].map(c=>h('th',{key:c},c))
+              )),
+              h('tbody',null,
+                ...items.map(it=>h('tr',{key:it.id},
+                  h('td',null,it.name),
+                  h('td',null,it.unit),
+                  h('td',null,it.qty),
+                  h('td',null,fmt(it.gmd,currency)),
+                  h('td',null,fmt(it.gmd*it.qty,currency))
+                ))
+              )
+            ),
+            h('div',{key:"tot",className:"pq-total"},"Total ("+currency+"): "+fmt(total,currency)),
+            h('div',{key:"foot",className:"pq-footer"},
+              "Prices are market estimates only. Final pricing confirmed by Briksafe before any payment is requested. \u00a9 "+new Date().getFullYear()+" Briksafe."
+            )
+          ]
+    )
   );
 }
 
