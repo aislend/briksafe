@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Privacy Policy — Briksafe</title>
 <meta name="description" content="Briksafe Privacy Policy. How we collect, use, and protect your personal data in compliance with UK GDPR and EU GDPR."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>"/>
+<link rel="canonical" href="https://briksafe.com/privacy"/>
+<meta property="og:title" content="Privacy Policy — Briksafe"/>
+<meta property="og:type" content="website"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet"/>
@@ -89,6 +93,13 @@ button{cursor:pointer;border:none;background:none;font-family:var(--ff)}
 }
 .sn-link:hover{color:var(--ink-900);background:var(--bg-warm);text-decoration:none}
 .sn-link.active{color:var(--forest);border-left-color:var(--forest);font-weight:600}
+.mob-section-select{
+  display:none;
+  width:100%;padding:11px 14px;margin-bottom:24px;
+  border:1.5px solid #dde5df;border-radius:6px;
+  font-size:0.9375rem;color:#2d4035;background:#fff;outline:none;
+}
+@media(max-width:899px){.mob-section-select{display:block}}
 
 /* ── PRIVACY CONTENT ─────────────────────────────────────────────────────── */
 .privacy-doc{}
@@ -158,8 +169,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--ff)}
     </a>
     <nav class="nav" role="navigation" aria-label="Main">
       <a href="index.html" class="nl">Home</a>
+      <a href="index.html#services" class="nl">Services</a>
       <a href="index.html#materials" class="nl">Prices</a>
-      <a href="index.html#tools" class="nl">Tools</a>
       <a href="about.html" class="nl">About</a>
       <a href="index.html#quote" class="nl">Get a Quote</a>
     </nav>
@@ -172,8 +183,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--ff)}
   </div>
   <div class="mob-nav" id="mob-nav" style="display:none" aria-label="Mobile navigation">
     <a href="index.html" class="mob-nl">Home</a>
+    <a href="index.html#services" class="mob-nl">Services</a>
     <a href="index.html#materials" class="mob-nl">Prices</a>
-    <a href="index.html#tools" class="mob-nl">Tools</a>
     <a href="about.html" class="mob-nl">About</a>
     <a href="index.html#quote" class="mob-nl">Get a Quote</a>
   </div>
@@ -213,13 +224,28 @@ button{cursor:pointer;border:none;background:none;font-family:var(--ff)}
     </aside>
 
     <!-- DOCUMENT -->
+    <!-- Mobile section jump select -->
+    <select class="mob-section-select" id="mob-section-sel" aria-label="Jump to section">
+      <option value="">Jump to section...</option>
+      <option value="who-we-are">Who we are</option>
+      <option value="what-we-collect">What we collect</option>
+      <option value="how-we-use">How we use it</option>
+      <option value="where-stored">Where it's stored</option>
+      <option value="how-long">How long we keep it</option>
+      <option value="your-rights">Your rights</option>
+      <option value="cookies">Cookies &amp; tracking</option>
+      <option value="third-parties">Third parties</option>
+      <option value="children">Children</option>
+      <option value="changes">Policy changes</option>
+      <option value="contact-us">Contact</option>
+    </select>
     <div class="privacy-doc">
       <div class="updated-badge">Last updated: 1 May 2026</div>
 
       <div class="policy-section" id="who-we-are">
         <h2>Who we are</h2>
         <p>
-          Briksafe is a building materials procurement service for the Gambian diaspora. We operate as an independent procurement agent, not a financial service or licensed broker. We help clients identify and purchase building materials in The Gambia on their behalf.
+          Briksafe is a full-service construction management partner for the Gambian diaspora. We manage building projects on behalf of clients abroad — including materials sourcing, contractor management, site supervision, and delivery. We operate as an independent agent, not a financial service or licensed broker.
         </p>
         <p>
           We are based in The Gambia. If you have any questions about this policy or how we handle your data, you can contact us at:
@@ -403,14 +429,14 @@ button{cursor:pointer;border:none;background:none;font-family:var(--ff)}
     <div class="footer-top">
       <div>
         <div class="footer-brand">Briksafe</div>
-        <p class="footer-desc">Helping the Gambian diaspora buy building materials safely, transparently, and confidently.</p>
+        <p class="footer-desc">Your trusted construction partner in The Gambia. We handle everything so you can build from abroad with confidence.</p>
       </div>
       <div>
         <div class="fcol-label">Navigate</div>
         <div class="flinks">
           <a href="index.html" class="flink">Home</a>
-          <a href="index.html#materials" class="flink">Prices</a>
-          <a href="index.html#tools" class="flink">Tools</a>
+          <a href="index.html#services" class="flink">Services</a>
+          <a href="index.html#materials" class="flink">Price Directory</a>
           <a href="about.html" class="flink">About</a>
           <a href="index.html#guide" class="flink">Building Guide</a>
           <a href="index.html#quote" class="flink">Get a Quote</a>
@@ -422,6 +448,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--ff)}
           <a href="https://wa.me/2203569784" target="_blank" rel="noopener noreferrer" class="flink" style="color:#25d366;font-weight:700">+220 356 9784</a>
           <a href="mailto:hello@briksafe.com" class="flink">hello@briksafe.com</a>
           <a href="privacy.html" class="flink" style="color:var(--forest);font-weight:600">Privacy Policy</a>
+          <a href="https://www.linkedin.com/company/briksafe" target="_blank" rel="noopener noreferrer" class="flink">LinkedIn</a>
+          <a href="https://www.facebook.com/briksafe" target="_blank" rel="noopener noreferrer" class="flink">Facebook</a>
         </div>
       </div>
     </div>
@@ -444,6 +472,18 @@ btn.addEventListener('click',()=>{
 document.addEventListener('click',e=>{
   if(!e.target.closest('.hdr'))nav.style.display='none';
 });
+
+// Mobile section select
+const sel=document.getElementById('mob-section-sel');
+if(sel){
+  sel.addEventListener('change',()=>{
+    if(sel.value){
+      const target=document.getElementById(sel.value);
+      if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+      sel.value='';
+    }
+  });
+}
 
 // Highlight active sidebar section on scroll
 const sections=document.querySelectorAll('.policy-section[id]');
